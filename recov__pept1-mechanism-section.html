@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PEPT1 — The Science Behind 15-Minute Absorption | Recov</title>
+<style>
+  :root {
+    --recov-amber: #C8553D;
+    --recov-amber-glow: #C8553D33;
+    --recov-matte: #111111;
+    --recov-surface: #1A1A1A;
+    --recov-cream: #F5F0EB;
+    --recov-cream-muted: #F5F0EB99;
+    --pathway-grey: #6B7280;
+    --pathway-grey-dim: #6B728044;
+    --green-check: #34D399;
+    --red-warn: #EF4444;
+    --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+    --font-mono: 'JetBrains Mono', 'SF Mono', monospace;
+  }
+
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  .mechanism-section {
+    background: var(--recov-matte);
+    color: var(--recov-cream);
+    font-family: var(--font-body);
+    padding: 80px 20px;
+    overflow: hidden;
+  }
+
+  .mechanism-container {
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+
+  /* --- SECTION HEADER --- */
+  .mechanism-header {
+    text-align: center;
+    margin-bottom: 64px;
+  }
+
+  .mechanism-eyebrow {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--recov-amber);
+    margin-bottom: 16px;
+  }
+
+  .mechanism-title {
+    font-size: clamp(28px, 5vw, 48px);
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    letter-spacing: -0.02em;
+  }
+
+  .mechanism-title em {
+    font-style: normal;
+    color: var(--recov-amber);
+  }
+
+  .mechanism-subtitle {
+    font-size: clamp(15px, 2vw, 18px);
+    color: var(--recov-cream-muted);
+    max-width: 640px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  /* --- PROBLEM STATEMENT --- */
+  .problem-block {
+    background: var(--recov-surface);
+    border: 1px solid #ffffff0d;
+    border-radius: 12px;
+    padding: 40px 32px;
+    margin-bottom: 56px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .problem-block::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--pathway-grey);
+  }
+
+  .problem-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--pathway-grey);
+    margin-bottom: 12px;
+  }
+
+  .problem-text {
+    font-size: clamp(18px, 3vw, 24px);
+    font-weight: 600;
+    line-height: 1.4;
+    margin-bottom: 16px;
+  }
+
+  .problem-detail {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--recov-cream-muted);
+  }
+
+  /* --- SPLIT PATHWAY DIAGRAM --- */
+  .pathway-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 56px;
+  }
+
+  @media (max-width: 640px) {
+    .pathway-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .pathway-column {
+    position: relative;
+  }
+
+  .pathway-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 12px 16px;
+    border-radius: 8px 8px 0 0;
+    text-align: center;
+  }
+
+  .pathway-label--slow {
+    background: var(--pathway-grey-dim);
+    color: var(--pathway-grey);
+  }
+
+  .pathway-label--fast {
+    background: var(--recov-amber-glow);
+    color: var(--recov-amber);
+  }
+
+  .pathway-steps {
+    border: 1px solid #ffffff0d;
+    border-top: none;
+    border-radius: 0 0 8px 8px;
+    overflow: hidden;
+  }
+
+  .pathway-step {
+    padding: 20px 20px;
+    border-bottom: 1px solid #ffffff08;
+    position: relative;
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+
+  .pathway-step.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .pathway-step:last-child {
+    border-bottom: none;
+  }
+
+  .step-name {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+
+  .step-detail {
+    font-size: 13px;
+    color: var(--recov-cream-muted);
+    line-height: 1.5;
+  }
+
+  .step-time {
+    font-size: 12px;
+    font-weight: 600;
+    font-family: var(--font-mono);
+    margin-top: 6px;
+  }
+
+  .step-time--slow { color: var(--pathway-grey); }
+  .step-time--fast { color: var(--recov-amber); }
+
+  .step-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 4px;
+    margin-top: 6px;
+    margin-right: 4px;
+  }
+
+  .step-badge--warn {
+    background: #EF444418;
+    color: var(--red-warn);
+  }
+
+  .step-badge--good {
+    background: #34D39918;
+    color: var(--green-check);
+  }
+
+  .step-bypassed {
+    padding: 20px;
+    text-align: center;
+    color: var(--recov-amber);
+    font-size: 13px;
+    font-weight: 500;
+    border-bottom: 1px solid #ffffff08;
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+
+  .step-bypassed.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .step-bypassed .bypass-line {
+    display: block;
+    width: 32px;
+    height: 2px;
+    background: var(--recov-amber);
+    margin: 0 auto 8px;
+    opacity: 0.4;
+  }
+
+  /* --- COMPARISON CARD --- */
+  .comparison-card {
+    background: var(--recov-surface);
+    border: 1px solid var(--recov-amber-glow);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 56px;
+  }
+
+  .comparison-header-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  .comparison-header-row > div {
+    padding: 16px 20px;
+    border-bottom: 1px solid #ffffff0d;
+  }
+
+  .comparison-header-row > div:first-child {
+    color: var(--recov-cream-muted);
+  }
+
+  .comparison-header-row > div:nth-child(2) {
+    color: var(--pathway-grey);
+    text-align: center;
+    border-left: 1px solid #ffffff0d;
+  }
+
+  .comparison-header-row > div:nth-child(3) {
+    color: var(--recov-amber);
+    text-align: center;
+    border-left: 1px solid #ffffff0d;
+    background: var(--recov-amber-glow);
+  }
+
+  .comparison-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    font-size: 14px;
+    border-bottom: 1px solid #ffffff08;
+  }
+
+  .comparison-row:last-child { border-bottom: none; }
+
+  .comparison-row > div {
+    padding: 14px 20px;
+  }
+
+  .comparison-row > div:first-child {
+    font-weight: 500;
+    color: var(--recov-cream-muted);
+    font-size: 13px;
+  }
+
+  .comparison-row > div:nth-child(2) {
+    text-align: center;
+    color: var(--pathway-grey);
+    border-left: 1px solid #ffffff0d;
+  }
+
+  .comparison-row > div:nth-child(3) {
+    text-align: center;
+    font-weight: 600;
+    border-left: 1px solid #ffffff0d;
+  }
+
+  /* --- MECHANISM DETAIL --- */
+  .mechanism-detail {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 56px;
+  }
+
+  @media (max-width: 640px) {
+    .mechanism-detail {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .detail-card {
+    background: var(--recov-surface);
+    border: 1px solid #ffffff0d;
+    border-radius: 12px;
+    padding: 28px 24px;
+  }
+
+  .detail-icon {
+    font-size: 20px;
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .detail-title {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .detail-text {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--recov-cream-muted);
+  }
+
+  /* --- BOTTOM CTA --- */
+  .mechanism-cta {
+    text-align: center;
+    padding: 48px 24px;
+    border-top: 1px solid #ffffff0d;
+  }
+
+  .mechanism-cta p {
+    font-size: 14px;
+    color: var(--recov-cream-muted);
+    margin-bottom: 20px;
+  }
+
+  .cta-badges {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .cta-badge {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 8px 16px;
+    border: 1px solid #ffffff1a;
+    border-radius: 100px;
+    color: var(--recov-cream-muted);
+  }
+
+  /* --- REDUCED MOTION --- */
+  @media (prefers-reduced-motion: reduce) {
+    .pathway-step,
+    .step-bypassed {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }
+</style>
+</head>
+<body>
+
+<section class="mechanism-section" id="mechanism">
+  <div class="mechanism-container">
+
+    <!-- HEADER -->
+    <div class="mechanism-header">
+      <p class="mechanism-eyebrow">The Science</p>
+      <h2 class="mechanism-title">Why your protein takes <em>3–5 hours</em>.<br>And ours takes <em>15 minutes</em>.</h2>
+      <p class="mechanism-subtitle">It's not about the protein. It's about the transporter. PEPT1 is the body's dedicated fast lane for peptide absorption — and it only accepts di- and tripeptides. Exactly what Recov delivers.</p>
+    </div>
+
+    <!-- PROBLEM -->
+    <div class="problem-block">
+      <p class="problem-label">The bottleneck</p>
+      <p class="problem-text">Whole protein must be enzymatically dismantled — stomach acid, pancreatic enzymes, brush border cleavage — before a single amino acid crosses the intestinal wall.</p>
+      <p class="problem-detail">Every step takes time. Free amino acids then compete for low-capacity, saturable transporters (CAT1, LAT1, ASCT2). High concentrations of one amino acid reduce uptake of others — competitive inhibition. And in the lower gut, bacteria consume amino acids before your body absorbs them. The result: hours of processing, substantial nutrient loss, and a fraction of what you ate reaching your bloodstream.</p>
+    </div>
+
+    <!-- SPLIT PATHWAY -->
+    <div class="pathway-grid">
+
+      <!-- LEFT: Whole Protein (slow) -->
+      <div class="pathway-column">
+        <div class="pathway-label pathway-label--slow">Whole Protein (Whey / Collagen)</div>
+        <div class="pathway-steps">
+          <div class="pathway-step" data-delay="0">
+            <div class="step-name">Stomach — acid denaturation</div>
+            <div class="step-detail">HCl + pepsin unfold protein chains into large peptide fragments.</div>
+            <div class="step-time step-time--slow">+ 30–60 min</div>
+          </div>
+          <div class="pathway-step" data-delay="200">
+            <div class="step-name">Pancreatic enzymes</div>
+            <div class="step-detail">Trypsin, chymotrypsin, elastase cleave fragments into smaller peptides + free amino acids.</div>
+            <div class="step-time step-time--slow">+ 60–120 min</div>
+          </div>
+          <div class="pathway-step" data-delay="400">
+            <div class="step-name">Brush border enzymes</div>
+            <div class="step-detail">Final cleavage at the intestinal wall. Produces free amino acids for transport.</div>
+            <div class="step-time step-time--slow">+ 30–60 min</div>
+          </div>
+          <div class="pathway-step" data-delay="600">
+            <div class="step-name">Free amino acid transport</div>
+            <div class="step-detail">Individual AAs compete for saturable, high-affinity transporters. Bottleneck.</div>
+            <span class="step-badge step-badge--warn">Saturable</span>
+            <span class="step-badge step-badge--warn">Competitive inhibition</span>
+          </div>
+          <div class="pathway-step" data-delay="800">
+            <div class="step-name">Bacterial amino acid tax</div>
+            <div class="step-detail">Lower-gut bacteria consume amino acids — especially lysine — before absorption.</div>
+            <span class="step-badge step-badge--warn">Nutrient loss</span>
+          </div>
+          <div class="pathway-step" data-delay="1000">
+            <div class="step-name">Bloodstream</div>
+            <div class="step-time step-time--slow">Total: 3–5 hours | ~60% efficiency</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: Recov (fast) -->
+      <div class="pathway-column">
+        <div class="pathway-label pathway-label--fast">Recov Dipeptides (Pre-Digested)</div>
+        <div class="pathway-steps">
+          <div class="step-bypassed" data-delay="0">
+            <span class="bypass-line"></span>
+            Stomach, pancreatic, and brush border stages bypassed — peptides already at transport size.
+          </div>
+          <div class="pathway-step" data-delay="200">
+            <div class="step-name">PEPT1 transporter</div>
+            <div class="step-detail">Proton-coupled cotransporter in the proximal small intestine. Transports di- and tripeptides directly — the body's fastest absorption route.</div>
+            <span class="step-badge step-badge--good">Non-saturable</span>
+            <span class="step-badge step-badge--good">No competition</span>
+            <span class="step-badge step-badge--good">&gt;90% efficiency</span>
+          </div>
+          <div class="step-bypassed" data-delay="400">
+            <span class="bypass-line"></span>
+            Absorbed in proximal intestine — before bacterial-dense zones. Zero bacterial tax.
+          </div>
+          <div class="pathway-step" data-delay="600">
+            <div class="step-name">Bloodstream</div>
+            <div class="step-detail">All 20 amino acids simultaneously available. Full-spectrum. No transporter ceiling.</div>
+            <div class="step-time step-time--fast">Total: 15–25 minutes | &gt;90% efficiency</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COMPARISON TABLE -->
+    <div class="comparison-card">
+      <div class="comparison-header-row">
+        <div>Metric</div>
+        <div>Whole Protein</div>
+        <div>Recov</div>
+      </div>
+      <div class="comparison-row">
+        <div>Time to bloodstream</div>
+        <div>3–5 hours</div>
+        <div style="color: var(--recov-amber);">15–25 min</div>
+      </div>
+      <div class="comparison-row">
+        <div>Transport mechanism</div>
+        <div>Free AA transporters</div>
+        <div>PEPT1 (peptide-specific)</div>
+      </div>
+      <div class="comparison-row">
+        <div>Transporter capacity</div>
+        <div>Saturable</div>
+        <div style="color: var(--green-check);">Non-saturable</div>
+      </div>
+      <div class="comparison-row">
+        <div>Competitive inhibition</div>
+        <div style="color: var(--red-warn);">Yes — AAs compete</div>
+        <div style="color: var(--green-check);">None</div>
+      </div>
+      <div class="comparison-row">
+        <div>Bacterial amino acid tax</div>
+        <div style="color: var(--red-warn);">Exposed</div>
+        <div style="color: var(--green-check);">Bypassed</div>
+      </div>
+      <div class="comparison-row">
+        <div>Absorption efficiency</div>
+        <div>~60%</div>
+        <div style="color: var(--recov-amber);">&gt;90%</div>
+      </div>
+      <div class="comparison-row">
+        <div>Amino acid spectrum</div>
+        <div>Varies by source</div>
+        <div>All 20 — complete</div>
+      </div>
+      <div class="comparison-row">
+        <div>Liver thermic overhead</div>
+        <div>~25% capacity used</div>
+        <div style="color: var(--green-check);">Zero</div>
+      </div>
+    </div>
+
+    <!-- MECHANISM DETAIL CARDS -->
+    <div class="mechanism-detail">
+      <div class="detail-card">
+        <span class="detail-icon" aria-hidden="true">&#9670;</span>
+        <div class="detail-title">Non-saturable at physiological doses</div>
+        <div class="detail-text">PEPT1 has millimolar-range Km values. At normal oral doses, luminal concentrations don't approach saturation. You can take more Recov and it continues absorbing efficiently. Free amino acid transporters have micromolar Km values — they hit a ceiling fast.</div>
+      </div>
+      <div class="detail-card">
+        <span class="detail-icon" aria-hidden="true">&#9670;</span>
+        <div class="detail-title">Zero competitive inhibition</div>
+        <div class="detail-text">Free amino acids fight each other for the same transporters. Leucine blocks isoleucine. Valine blocks both. Recov's dipeptides travel as paired units via PEPT1 — no competition. All 20 amino acids arrive together, not one at a time.</div>
+      </div>
+      <div class="detail-card">
+        <span class="detail-icon" aria-hidden="true">&#9670;</span>
+        <div class="detail-title">Proximal absorption — before bacteria</div>
+        <div class="detail-text">Whole protein digests through the entire GI tract. In the lower intestine, opportunistic bacteria consume amino acids — especially lysine — before your body does. Recov absorbs in the proximal small intestine, upstream of the bacterial-dense zones.</div>
+      </div>
+      <div class="detail-card">
+        <span class="detail-icon" aria-hidden="true">&#9670;</span>
+        <div class="detail-title">Preserved liver synthesis capacity</div>
+        <div class="detail-text">Your liver synthesises ~3g structural protein per hour. Digesting whole protein consumes ~25% of that capacity as thermic overhead. Recov bypasses digestion — PEPT1 transport isn't enzymatic breakdown — so the liver's full capacity stays available for building and repair.</div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="mechanism-cta">
+      <p>Not marketing. Mechanism. The same transporter, conserved across every mammalian species studied.</p>
+      <div class="cta-badges">
+        <span class="cta-badge">TGA-Listed</span>
+        <span class="cta-badge">WADA-Approved</span>
+        <span class="cta-badge">All 20 Amino Acids</span>
+        <span class="cta-badge">Pharmaceutical Grade</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SCROLL ANIMATION (GSAP ScrollTrigger) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+(function() {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Animate pathway steps on scroll
+  const steps = document.querySelectorAll('.pathway-step, .step-bypassed');
+  steps.forEach(function(step) {
+    const delay = parseInt(step.dataset.delay || '0', 10);
+    ScrollTrigger.create({
+      trigger: step,
+      start: 'top 85%',
+      once: true,
+      onEnter: function() {
+        setTimeout(function() {
+          step.classList.add('visible');
+        }, delay);
+      }
+    });
+  });
+
+  // Animate comparison card rows
+  const rows = document.querySelectorAll('.comparison-row');
+  rows.forEach(function(row, i) {
+    gsap.from(row, {
+      opacity: 0,
+      x: -12,
+      duration: 0.4,
+      delay: i * 0.08,
+      scrollTrigger: {
+        trigger: row,
+        start: 'top 90%',
+        once: true
+      }
+    });
+  });
+
+  // Animate detail cards
+  const cards = document.querySelectorAll('.detail-card');
+  cards.forEach(function(card, i) {
+    gsap.from(card, {
+      opacity: 0,
+      y: 20,
+      duration: 0.5,
+      delay: i * 0.1,
+      scrollTrigger: {
+        trigger: card,
+        start: 'top 85%',
+        once: true
+      }
+    });
+  });
+})();
+</script>
+
+</body>
+</html>

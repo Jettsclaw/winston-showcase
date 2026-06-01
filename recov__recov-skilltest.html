@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Recov — Pre-Digested Plasma Peptides | recovfaster.com</title>
+<meta name="description" content="All 20 amino acids absorbed in 15–25 minutes. TGA listed. WADA approved. No shake. No bloat. No compromise.">
+<meta property="og:title" content="Recov — The 25-Minute Plasma Absorption System">
+<meta property="og:description" content="Pre-digested plasma peptides. 6 tablets. 15–25 minute absorption. TGA listed. WADA approved.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+/* ── Tokens ── */
+:root {
+  --bg: #0a0a0f;
+  --s1: #101018;
+  --s2: #14141e;
+  --s3: #1a1a28;
+  --white: #f0f0f5;
+  --tx-1: #d0d0da;
+  --tx-2: #8a8a9a;
+  --tx-3: #55556a;
+  --accent: #5ac8fa;
+  --accent-hi: #8ee0ff;
+  --accent-lo: #3a8ab0;
+  --accent-dim: rgba(90,200,250,.08);
+  --line: rgba(255,255,255,.06);
+  --line-hi: rgba(255,255,255,.09);
+  --line-acc: rgba(90,200,250,.18);
+  --green-tx: #4ac88c;
+  --red-tx: #dc5050;
+  --warn-tx: #f0a028;
+  --badge-critical-bg: rgba(220,80,80,.12);
+  --badge-high-bg: rgba(240,160,40,.12);
+  --badge-medium-bg: rgba(90,200,250,.08);
+  --status-critical: #dc5050;
+  --status-high: #f0a028;
+  --status-medium: #5ac8fa;
+  --status-pass: #4ac88c;
+  --status-low: #8a8a9a;
+  --space-section: clamp(56px, 8vw, 88px);
+  --wrap: min(680px, 90vw);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  background: var(--bg); color: var(--tx-1);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+.wrap { width: var(--wrap); margin: 0 auto; }
+
+/* ── Progress bar ── */
+.progress-bar {
+  position: fixed; top: 0; left: 0;
+  width: 100%; height: 3px;
+  background: var(--accent);
+  transform: scaleX(0); transform-origin: left;
+  z-index: 1000; will-change: transform;
+}
+
+/* ── Topbar ── */
+.topbar {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 22px 0 20px;
+  border-bottom: 1px solid var(--line);
+  position: relative;
+}
+.topbar::before {
+  content: ''; position: absolute;
+  top: 0; left: -48px; right: -48px; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent) 30%, var(--accent) 70%, transparent);
+  opacity: .45;
+}
+.topbar-left { display: flex; align-items: center; gap: 14px; }
+.topbar-right { text-align: right; }
+.logo-mark {
+  font-family: 'DM Serif Display', serif;
+  font-size: 22px; color: var(--accent); font-weight: 400;
+  letter-spacing: .04em;
+}
+.topbar-meta {
+  font-size: 9px; color: var(--tx-3);
+  letter-spacing: .18em; text-transform: uppercase;
+}
+.topbar-badge {
+  display: inline-block; font-size: 8px; font-weight: 700;
+  letter-spacing: .16em; text-transform: uppercase;
+  padding: 4px 12px; color: var(--accent);
+  border: 1px solid var(--line-acc);
+}
+
+/* ── Hamburger ── */
+.hamburger-btn {
+  display: flex; flex-direction: column; gap: 5px;
+  background: none; border: none; cursor: pointer; padding: 4px;
+}
+.hamburger-btn span {
+  display: block; width: 20px; height: 1.5px; background: var(--tx-2);
+  transition: transform .25s ease, opacity .25s ease;
+}
+.hamburger-btn.open span:nth-child(1) { transform: rotate(45deg) translate(4px,5px); }
+.hamburger-btn.open span:nth-child(2) { opacity: 0; }
+.hamburger-btn.open span:nth-child(3) { transform: rotate(-45deg) translate(4px,-5px); }
+
+/* ── Mobile nav ── */
+.mobile-nav {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100dvh;
+  background: rgba(10,10,15,.97); backdrop-filter: blur(12px);
+  z-index: 999; display: flex; flex-direction: column;
+  justify-content: center; align-items: center; gap: 28px;
+  opacity: 0; pointer-events: none;
+  transition: opacity .3s ease;
+}
+.mobile-nav.open { opacity: 1; pointer-events: all; }
+.mobile-nav a {
+  font-family: 'DM Serif Display', serif;
+  font-size: 28px; color: var(--white); text-decoration: none;
+  transition: color .15s ease;
+}
+.mobile-nav a:hover { color: var(--accent); }
+
+/* ── Step 1 & 2: Callout + Hero ── */
+.hero { padding: 72px 0 60px; border-bottom: 1px solid var(--line); }
+.hero-callout {
+  font-size: 10px; font-weight: 700; letter-spacing: .22em;
+  text-transform: uppercase; color: var(--accent-lo); margin-bottom: 28px;
+  display: flex; align-items: center; gap: 12px;
+}
+.hero-callout::after { content: ''; flex: 1; height: 1px; background: var(--line-hi); }
+.hero-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(32px, 7vw, 54px);
+  color: var(--white); line-height: 1.06;
+  letter-spacing: -.02em; margin-bottom: 28px;
+}
+.hero-title em { color: var(--accent); font-style: italic; }
+
+/* Step 3: Subheadline */
+.hero-sub {
+  font-size: 17px; color: var(--tx-2); line-height: 1.85;
+  padding-left: 18px; border-left: 2px solid var(--line-acc);
+  max-width: 560px;
+}
+.hero-sub strong { color: var(--tx-1); font-weight: 500; }
+
+/* ── Trust strip ── */
+.trust-strip {
+  display: flex; flex-wrap: wrap; gap: 12px; margin-top: 36px;
+}
+.trust-pill {
+  font-size: 9px; font-weight: 700; letter-spacing: .14em;
+  text-transform: uppercase; padding: 6px 14px;
+  border: 1px solid var(--line-acc); color: var(--accent-lo);
+  background: var(--accent-dim);
+}
+
+/* ── Sections ── */
+.sec { padding: var(--space-section) 0; border-bottom: 1px solid var(--line); }
+.sec:last-of-type { border-bottom: none; }
+.sec-num {
+  font-size: 9px; font-weight: 700; letter-spacing: .22em;
+  text-transform: uppercase; color: var(--accent-lo);
+  margin-bottom: 18px; display: flex; align-items: center; gap: 12px;
+}
+.sec-num::after { content: ''; flex: 1; height: 1px; background: var(--line-hi); }
+.h2 {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(26px, 4.5vw, 38px); color: var(--white);
+  line-height: 1.1; letter-spacing: -.015em; margin-bottom: 24px;
+  text-wrap: balance;
+}
+.h2 em { color: var(--accent); font-style: italic; }
+.copy { font-size: 16px; color: var(--tx-1); line-height: 1.85; }
+.copy p { margin-bottom: 18px; }
+.copy p:last-child { margin-bottom: 0; }
+.copy strong { color: var(--white); font-weight: 600; }
+
+/* ── Pull quote ── */
+.pull {
+  margin: 36px 0; padding: 24px 26px;
+  background: rgba(90,200,250,.04);
+  border-left: 2px solid var(--accent);
+  position: relative; overflow: hidden;
+}
+.pull::before {
+  content: '\201C'; font-family: 'DM Serif Display', serif;
+  font-size: 80px; color: var(--accent); opacity: .08;
+  position: absolute; top: -12px; left: 14px; line-height: 1;
+}
+.pull p {
+  font-family: 'DM Serif Display', serif;
+  font-size: 18px; color: var(--accent-hi);
+  line-height: 1.65; font-style: italic; position: relative;
+}
+
+/* ── Stat grid ── */
+.sg { display: grid; grid-template-columns: repeat(2,1fr); gap: 1px; margin: 32px 0; background: var(--line-hi); }
+@media (min-width: 480px) { .sg { grid-template-columns: repeat(4,1fr); } }
+.sc { background: var(--s1); padding: 22px 18px; }
+.sn {
+  font-family: 'DM Serif Display', serif; font-size: clamp(26px,4vw,32px);
+  line-height: 1; margin-bottom: 10px;
+  background: linear-gradient(145deg, var(--accent-hi), var(--accent));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.sl { font-size: 11px; color: var(--tx-2); line-height: 1.55; }
+
+/* ── Comparison table ── */
+.tbl-wrap { overflow-x: auto; margin: 24px 0; }
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
+thead th {
+  background: var(--s2); color: var(--tx-3); font-size: 8px;
+  font-weight: 700; letter-spacing: .16em; text-transform: uppercase;
+  padding: 10px 14px; text-align: left; border-bottom: 1px solid var(--line-hi);
+}
+thead th.col-featured {
+  background: var(--accent-dim); color: var(--accent-hi);
+  border-top: 2px solid var(--accent);
+}
+tbody tr { border-bottom: 1px solid var(--line); }
+tbody tr:last-child { border-bottom: none; }
+tbody td { padding: 11px 14px; color: var(--tx-1); vertical-align: top; line-height: 1.5; }
+tbody td:first-child { font-weight: 600; color: var(--white); }
+tbody td.col-featured {
+  background: rgba(90,200,250,.05);
+  color: var(--accent-hi); font-weight: 600;
+  border-left: 1px solid var(--line-acc);
+  border-right: 1px solid var(--line-acc);
+}
+tbody td.dim { color: var(--tx-2); font-weight: 400; }
+.td-pass { color: var(--green-tx); font-weight: 700; }
+.td-fail { color: var(--red-tx); }
+
+/* ── Fascination bullets ── */
+.fasc-list { list-style: none; margin: 28px 0; }
+.fasc-list li {
+  position: relative; padding: 12px 0 12px 28px;
+  border-bottom: 1px solid var(--line);
+  font-size: 15px; color: var(--tx-1); line-height: 1.7;
+}
+.fasc-list li:last-child { border-bottom: none; }
+.fasc-list li::before {
+  content: ''; position: absolute; left: 0; top: 18px;
+  width: 8px; height: 8px; border: 1.5px solid var(--accent);
+  transform: rotate(45deg);
+}
+
+/* ── Benefit grid ── */
+.benefit-grid {
+  display: grid; grid-template-columns: 1fr;
+  gap: 1px; background: var(--line-hi); margin: 32px 0;
+}
+@media (min-width: 520px) { .benefit-grid { grid-template-columns: repeat(2,1fr); } }
+.benefit-card { background: var(--s1); padding: 26px 22px; }
+.benefit-icon {
+  font-size: 24px; margin-bottom: 14px;
+  background: linear-gradient(145deg, var(--accent-hi), var(--accent));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.benefit-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 17px; color: var(--white); margin-bottom: 8px; line-height: 1.3;
+}
+.benefit-desc { font-size: 13px; color: var(--tx-2); line-height: 1.7; }
+
+/* ── Offer block ── */
+.offer-block {
+  margin: 36px 0; padding: 32px 28px;
+  background: var(--s1);
+  border: 1px solid var(--line-acc);
+  position: relative;
+}
+.offer-block::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-hi));
+}
+.offer-eyebrow {
+  font-size: 9px; font-weight: 700; letter-spacing: .22em;
+  text-transform: uppercase; color: var(--accent-lo); margin-bottom: 16px;
+}
+.offer-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(22px, 4vw, 30px); color: var(--white);
+  line-height: 1.15; margin-bottom: 18px;
+}
+.offer-body { font-size: 15px; color: var(--tx-1); line-height: 1.8; }
+.offer-body strong { color: var(--white); }
+
+/* ── Value stack ── */
+.value-stack { margin: 24px 0; }
+.vs-row {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 10px 0; border-bottom: 1px solid var(--line);
+  font-size: 14px;
+}
+.vs-row:last-child { border-bottom: none; }
+.vs-label { color: var(--tx-1); }
+.vs-value { color: var(--tx-2); text-decoration: line-through; font-size: 13px; }
+.vs-total {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding: 14px 0 0; margin-top: 8px;
+  border-top: 2px solid var(--accent);
+}
+.vs-total .vs-label { font-weight: 700; color: var(--white); font-size: 16px; }
+.vs-total .vs-value {
+  text-decoration: none; color: var(--accent-hi);
+  font-family: 'DM Serif Display', serif; font-size: 28px;
+}
+
+/* ── CTA button ── */
+.cta-btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px; font-weight: 700; letter-spacing: .12em;
+  text-transform: uppercase; text-decoration: none;
+  color: var(--bg); background: var(--accent);
+  padding: 16px 36px; border: none; cursor: pointer;
+  transition: background .2s ease, transform .15s ease;
+  margin-top: 28px;
+}
+.cta-btn:hover { background: var(--accent-hi); transform: translateY(-1px); }
+.cta-btn svg { width: 14px; height: 14px; }
+
+.cta-btn-outline {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px; font-weight: 700; letter-spacing: .12em;
+  text-transform: uppercase; text-decoration: none;
+  color: var(--accent); background: transparent;
+  padding: 12px 28px; border: 1px solid var(--line-acc); cursor: pointer;
+  transition: background .2s ease;
+  margin-top: 12px;
+}
+.cta-btn-outline:hover { background: var(--accent-dim); }
+
+/* ── Guarantee box ── */
+.guarantee {
+  margin: 32px 0; padding: 24px 22px;
+  border: 1px solid rgba(74,200,140,.25);
+  background: rgba(74,200,140,.04);
+}
+.guarantee-label {
+  font-size: 9px; font-weight: 700; letter-spacing: .18em;
+  text-transform: uppercase; color: var(--green-tx); margin-bottom: 10px;
+}
+.guarantee p { font-size: 15px; color: var(--tx-1); line-height: 1.75; }
+.guarantee strong { color: var(--white); }
+
+/* ── Scarcity ── */
+.scarcity {
+  margin: 24px 0; padding: 14px 18px;
+  border-left: 2px solid var(--warn-tx);
+  background: rgba(240,160,40,.05);
+}
+.scarcity p {
+  font-size: 13px; color: var(--warn-tx); font-weight: 600; line-height: 1.6;
+}
+
+/* ── PS section ── */
+.ps {
+  padding: 48px 0; border-top: 1px solid var(--line);
+}
+.ps-label {
+  font-family: 'DM Serif Display', serif;
+  font-size: 18px; color: var(--accent); margin-bottom: 14px;
+}
+.ps p { font-size: 15px; color: var(--tx-2); line-height: 1.8; }
+.ps strong { color: var(--tx-1); }
+
+/* ── Close block ── */
+.cb { padding: 72px 0 0; text-align: center; }
+.cb::before { content: ''; display: block; width: 40px; height: 1px; background: var(--accent); margin: 0 auto 52px; opacity: .35; }
+.ct { font-family: 'DM Serif Display', serif; font-size: clamp(28px,5.5vw,44px); color: var(--white); line-height: 1.1; letter-spacing: -.015em; margin-bottom: 22px; text-wrap: balance; }
+.ct em { color: var(--accent); }
+.cs { font-size: 15px; color: var(--tx-2); line-height: 1.85; max-width: 480px; margin: 0 auto 28px; }
+
+/* ── Footer ── */
+footer {
+  border-top: 1px solid var(--line); padding: 28px 0;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.fl { display: flex; align-items: center; gap: 12px; opacity: .3; }
+.fb { font-size: 9px; color: var(--tx-3); letter-spacing: .1em; text-transform: uppercase; }
+
+/* ── Animations ── */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+.reveal.in { opacity: 1; transform: translateY(0); }
+.stagger > * { opacity: 0; transform: translateY(18px); transition: opacity .5s ease, transform .5s ease; }
+.stagger.in > * { opacity: 1; transform: translateY(0); }
+.stagger.in > *:nth-child(1) { transition-delay: .05s; }
+.stagger.in > *:nth-child(2) { transition-delay: .1s; }
+.stagger.in > *:nth-child(3) { transition-delay: .15s; }
+.stagger.in > *:nth-child(4) { transition-delay: .2s; }
+.stagger.in > *:nth-child(5) { transition-delay: .25s; }
+.stagger.in > *:nth-child(6) { transition-delay: .3s; }
+.stagger.in > *:nth-child(7) { transition-delay: .35s; }
+.stagger.in > *:nth-child(8) { transition-delay: .4s; }
+
+/* ── Responsive ── */
+@media (max-width: 480px) {
+  .hero { padding: 48px 0 40px; }
+  .cta-btn { width: 100%; justify-content: center; }
+  .cta-btn-outline { width: 100%; justify-content: center; }
+  .vs-total .vs-value { font-size: 22px; }
+}
+</style>
+</head>
+<body class="js">
+
+<div class="progress-bar" id="js-bar"></div>
+
+<!-- Mobile nav -->
+<nav class="mobile-nav" id="mobile-nav">
+  <a href="#mechanism">How It Works</a>
+  <a href="#proof">Credentials</a>
+  <a href="#benefits">Benefits</a>
+  <a href="#offer">The Offer</a>
+  <a href="https://recovfaster.com" target="_blank">Shop Now</a>
+</nav>
+
+<div class="wrap">
+
+  <!-- ═══ TOPBAR ═══ -->
+  <div class="topbar">
+    <div class="topbar-left">
+      <button class="hamburger-btn" id="hamburger-btn" aria-label="Open navigation">
+        <span></span><span></span><span></span>
+      </button>
+      <span class="logo-mark">Recov</span>
+    </div>
+    <div class="topbar-right">
+      <span class="topbar-badge">TGA Listed</span>
+    </div>
+  </div>
+
+  <!-- ═══ STEP 1: CALL OUT + STEP 2: HERO HEADLINE + STEP 3: SUBHEADLINE ═══ -->
+  <section class="hero" id="hero">
+    <div class="hero-callout">For athletes who train 4+ days a week</div>
+    <h1 class="hero-title reveal">
+      All 20 Amino Acids in Your Bloodstream in <em>25 Minutes</em> — Without the Bloat, the Ritual, or the Chalky Taste
+    </h1>
+    <p class="hero-sub reveal">
+      <strong>Recov is a pre-digested plasma peptide tablet.</strong> 6 tablets. Swallow with water. Absorbed via your PEPT1 transporter in 15–25 minutes — while conventional protein is still sitting in your stomach. TGA listed. WADA compliant. Used by Olympic weightlifting teams.
+    </p>
+    <div class="trust-strip reveal">
+      <span class="trust-pill">TGA Listed</span>
+      <span class="trust-pill">WADA Approved</span>
+      <span class="trust-pill">ASADA Compliant</span>
+      <span class="trust-pill">All 20 Amino Acids</span>
+    </div>
+  </section>
+
+  <!-- ═══ STEP 4: IRRESISTIBLE INTRIGUE (fascination bullets) ═══ -->
+  <section class="sec" id="intrigue">
+    <div class="sec-num">What You'll Discover</div>
+    <ul class="fasc-list stagger">
+      <li>The little-known reason <strong>68.5% of whey protein users</strong> experience GI distress — and the single form-factor change that eliminates it overnight</li>
+      <li>Why your body already runs on plasma protein — and what happens when you provide it pre-digested instead of forcing a 90-minute breakdown cycle</li>
+      <li>How Olympic weightlifting teams maintain training frequency <strong>without a single shake, blender, or chalky aftertaste</strong></li>
+      <li>The 15–25 minute absorption window that conventional protein sources physically cannot match — and the transporter pathway that makes it possible</li>
+      <li>Why "more grams of protein" is the wrong metric — and what <strong>amino acid bioavailability</strong> actually means for recovery between sessions</li>
+      <li>The reason TGA listing matters more than any influencer endorsement — and what it tells you about what's actually in the bottle</li>
+    </ul>
+  </section>
+
+  <!-- ═══ STEP 5: FLOODLIGHT THE PROBLEM ═══ -->
+  <section class="sec" id="problem">
+    <div class="sec-num">The Problem Nobody Talks About</div>
+    <h2 class="h2 reveal">Your Protein Source Is <em>Working Against</em> Your Training</h2>
+    <div class="copy reveal">
+      <p>You know the feeling. Thirty minutes after a post-workout drink and your stomach is a balloon. The bloat sits there while you try to eat your next meal. You've trained yourself to push through it because every coach, every brand, every influencer told you that you need protein within the anabolic window.</p>
+      <p>But here's what they don't tell you: <strong>your body spends 2–3 hours breaking down whey protein before a single amino acid reaches your bloodstream.</strong> During that entire digestive window, your gut is inflamed, your parasympathetic system is suppressed, and your body is burning energy on digestion instead of repair.</p>
+      <p>That's not a side effect. That's the mechanism. Whey requires enzymatic hydrolysis in your stomach. Casein curdles and slow-drips for hours. Plant proteins bring fibre and anti-nutrients that compound the digestive load. Every conventional protein source shares the same fundamental constraint: <strong>your body has to disassemble it before it can use it.</strong></p>
+    </div>
+
+    <div class="pull reveal">
+      <p>Every training session you recover from in 7 days instead of 2 is 5 sessions you don't get to do. Over a month, that's 20+ lost training days — not from injury, from digestion.</p>
+    </div>
+
+    <div class="sg stagger">
+      <div class="sc"><div class="sn">68.5%</div><div class="sl">of whey users report GI distress</div></div>
+      <div class="sc"><div class="sn">2–3 hrs</div><div class="sl">whey digestion time</div></div>
+      <div class="sc"><div class="sn">90 min</div><div class="sl">average bloat window</div></div>
+      <div class="sc"><div class="sn">~50%</div><div class="sl">amino acids lost in digestion</div></div>
+    </div>
+  </section>
+
+  <!-- ═══ STEP 6: PROVIDE THE SOLUTION (Hero Mechanism) ═══ -->
+  <section class="sec" id="mechanism">
+    <div class="sec-num">The Mechanism</div>
+    <h2 class="h2 reveal">Pre-Digested Plasma Peptides. <em>Already in the Form Your Body Uses.</em></h2>
+    <div class="copy reveal">
+      <p>Recov isn't whey. It isn't collagen. It isn't plant protein. It's <strong>plasma protein — the same molecular form your body already runs on</strong> — pre-digested into di-peptides and tri-peptides at pharmaceutical grade.</p>
+      <p>When you swallow 6 Recov tablets, there's nothing to break down. The peptides are already small enough to pass directly through your PEPT1 intestinal transporter — the same pathway your body uses for its own peptide absorption. No enzymatic hydrolysis. No inflammatory digestive cascade. No 90-minute wait.</p>
+      <p><strong>15–25 minutes.</strong> That's the absorption window. All 20 amino acids — including the 9 essentials — delivered directly into your bloodstream in the form your cells can immediately utilise for protein synthesis and tissue repair.</p>
+    </div>
+
+    <div class="pull reveal">
+      <p>Your body is 300,000+ functional peptides. Recov provides them directly — pre-digested, pre-formed, ready to deploy.</p>
+    </div>
+
+    <!-- Comparison table -->
+    <div class="tbl-wrap reveal">
+      <table>
+        <thead>
+          <tr>
+            <th>Parameter</th>
+            <th>Whey Protein</th>
+            <th>BCAAs</th>
+            <th>Collagen</th>
+            <th class="col-featured">Recov</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Absorption Time</td>
+            <td class="dim">2–3 hours</td>
+            <td class="dim">30–60 min</td>
+            <td class="dim">1–2 hours</td>
+            <td class="col-featured td-pass">15–25 min</td>
+          </tr>
+          <tr>
+            <td>Amino Acids</td>
+            <td class="dim">~18 (variable)</td>
+            <td class="dim">3 only</td>
+            <td class="dim">~8 (no tryptophan)</td>
+            <td class="col-featured td-pass">All 20</td>
+          </tr>
+          <tr>
+            <td>Digestive Load</td>
+            <td class="dim td-fail">High (hydrolysis)</td>
+            <td class="dim">Moderate</td>
+            <td class="dim">Moderate</td>
+            <td class="col-featured td-pass">Zero</td>
+          </tr>
+          <tr>
+            <td>GI Distress Risk</td>
+            <td class="dim td-fail">68.5% report</td>
+            <td class="dim">Low</td>
+            <td class="dim">Low</td>
+            <td class="col-featured td-pass">None documented</td>
+          </tr>
+          <tr>
+            <td>Form Factor</td>
+            <td class="dim">Powder + liquid</td>
+            <td class="dim">Capsule / powder</td>
+            <td class="dim">Powder / liquid</td>
+            <td class="col-featured td-pass">Tablet — no prep</td>
+          </tr>
+          <tr>
+            <td>TGA Listed</td>
+            <td class="dim td-fail">No</td>
+            <td class="dim td-fail">Varies</td>
+            <td class="dim td-fail">Varies</td>
+            <td class="col-featured td-pass">Yes</td>
+          </tr>
+          <tr>
+            <td>WADA Approved</td>
+            <td class="dim td-fail">No testing</td>
+            <td class="dim td-fail">No testing</td>
+            <td class="dim td-fail">No testing</td>
+            <td class="col-featured td-pass">Tested every 2 weeks</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ═══ STEP 7: CREDENTIALS ═══ -->
+  <section class="sec" id="proof">
+    <div class="sec-num">Credentials</div>
+    <h2 class="h2 reveal">Not a Brand Claim. <em>A Regulatory Fact.</em></h2>
+    <div class="copy reveal">
+      <p>Recov is listed on the <strong>Australian Register of Therapeutic Goods (TGA)</strong> — the same regulator that approves prescription medication. It's not a food-grade supplement making unverified claims. It's a therapeutic good with a listed formulation.</p>
+      <p>It's approved by <strong>WADA</strong> (World Anti-Doping Agency) and <strong>ASADA</strong> (Australian Sports Anti-Doping Authority). Batch-tested every 2 weeks for banned substances by the German Olympic Weightlifting team — zero incidents.</p>
+    </div>
+    <div class="sg stagger">
+      <div class="sc"><div class="sn">TGA</div><div class="sl">Therapeutic Goods Administration — listed</div></div>
+      <div class="sc"><div class="sn">WADA</div><div class="sl">World Anti-Doping Agency — approved</div></div>
+      <div class="sc"><div class="sn">14 days</div><div class="sl">Batch testing frequency</div></div>
+      <div class="sc"><div class="sn">0</div><div class="sl">Banned substance incidents</div></div>
+    </div>
+    <div class="copy reveal" style="margin-top: 28px;">
+      <p><strong>EU manufactured</strong> by Re-Gen Labs under pharmaceutical-grade hydrolysis. 100% natural source. Dairy-free. Gluten-free. Soy-free. No artificial colours, flavours, or additives. 180 tablets per bottle.</p>
+    </div>
+  </section>
+
+  <!-- ═══ STEP 8: BENEFITS ═══ -->
+  <section class="sec" id="benefits">
+    <div class="sec-num">Benefits</div>
+    <h2 class="h2 reveal">What Changes When Your Protein <em>Actually Arrives</em></h2>
+    <div class="benefit-grid stagger">
+      <div class="benefit-card">
+        <div class="benefit-icon">01</div>
+        <div class="benefit-title">Train More Frequently</div>
+        <div class="benefit-desc">Faster peptide delivery means faster tissue repair. The recovery window compresses — more sessions per week with the same body.</div>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">02</div>
+        <div class="benefit-title">Zero Digestive Overhead</div>
+        <div class="benefit-desc">No bloating. No GI distress. No energy diverted to breaking down protein. Your parasympathetic system stays in repair mode, not digestion mode.</div>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">03</div>
+        <div class="benefit-title">Complete Amino Profile</div>
+        <div class="benefit-desc">All 20 amino acids — including all 9 essentials — in every dose. Not a partial profile. Not 3 BCAAs pretending to be whole protein.</div>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">04</div>
+        <div class="benefit-title">3-Second Protocol</div>
+        <div class="benefit-desc">6 tablets. Water. Done. No measuring. No blending. No cleanup. No chalky aftertaste. Throw them in a pocket and take them anywhere.</div>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">05</div>
+        <div class="benefit-title">Pre-Sleep Recovery</div>
+        <div class="benefit-desc">Take 4–6 tablets before bed. Peptides absorb while you sleep — no heavy meal sitting in your stomach, no disrupted sleep from digestion.</div>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">06</div>
+        <div class="benefit-title">Tested Clean, Every Batch</div>
+        <div class="benefit-desc">WADA + ASADA compliant. Tested every 14 days. If you compete at any level — or just care about what you put in your body — this is the standard.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ STEP 9: SOCIAL PROOF ═══ -->
+  <section class="sec" id="social-proof">
+    <div class="sec-num">Who Uses Recov</div>
+    <h2 class="h2 reveal">Trusted by Athletes Who <em>Can't Afford</em> a Bad Batch</h2>
+    <div class="copy reveal">
+      <p>The German Olympic Weightlifting team uses Recov and tests every batch for banned substances — their careers depend on clean supplementation. Recov is also used by professional rugby players, CrossFit competitors, and clinical practitioners across Europe and Australia.</p>
+    </div>
+
+    <div class="pull reveal">
+      <p>I've tried every protein on the market. This is the first one that doesn't leave me bloated for an hour after training. The tablet form alone is worth the switch.</p>
+    </div>
+    <p style="font-size: 11px; color: var(--tx-3); margin-top: -24px; margin-bottom: 24px;">— Verified Recov customer</p>
+
+    <div class="pull reveal">
+      <p>My patients recovering from surgery show measurably faster tissue repair. The pre-digested peptide form bypasses every bottleneck I see with conventional protein supplementation.</p>
+    </div>
+    <p style="font-size: 11px; color: var(--tx-3); margin-top: -24px;">— Clinical practitioner, AU</p>
+  </section>
+
+  <!-- ═══ STEPS 10–15: THE OFFER BLOCK ═══ -->
+  <section class="sec" id="offer">
+    <div class="sec-num">The Offer</div>
+    <h2 class="h2 reveal">Your First Month of <em>Recov</em></h2>
+
+    <!-- Step 10: Godfather Offer -->
+    <div class="offer-block reveal">
+      <div class="offer-eyebrow">Subscribe & Save — Launch Pricing</div>
+      <div class="offer-title">$99.95/month <span style="font-size: .5em; color: var(--tx-3); text-decoration: line-through;">$119.95 retail</span></div>
+      <div class="offer-body">
+        <p><strong>180 tablets per bottle.</strong> 30-day supply at the general health protocol (6 tablets/day) or 18 days at the athlete protocol (10 tablets/day). Delivered to your door every month. Cancel anytime — no lock-in, no penalty, no questions.</p>
+        <p style="margin-top: 12px;">We're offering $20 off retail because we're building the AU community from scratch. 1,584 bottles in the first Australian batch. When they're gone, the next EU production run is 6 weeks out.</p>
+      </div>
+    </div>
+
+    <!-- Step 11: Bonuses + Step 12: Value Stack -->
+    <div class="value-stack reveal">
+      <div class="vs-row">
+        <span class="vs-label">Recov — 180 tablets (30-day supply)</span>
+        <span class="vs-value">$119.95</span>
+      </div>
+      <div class="vs-row">
+        <span class="vs-label">Free Shipping (AU-wide)</span>
+        <span class="vs-value">$12.00</span>
+      </div>
+      <div class="vs-row">
+        <span class="vs-label">Recovery Protocol PDF — dosing by goal</span>
+        <span class="vs-value">$29.00</span>
+      </div>
+      <div class="vs-row">
+        <span class="vs-label">30-Day DOMS Tracking Template</span>
+        <span class="vs-value">$15.00</span>
+      </div>
+      <div class="vs-total">
+        <span class="vs-label">Today</span>
+        <span class="vs-value">$99.95<span style="font-size: .45em; -webkit-text-fill-color: var(--tx-3); color: var(--tx-3);">/mo</span></span>
+      </div>
+    </div>
+
+    <!-- Step 13: Price framing -->
+    <div class="copy reveal" style="margin-top: 24px;">
+      <p><strong>$4.20 per training session</strong> (based on 5 sessions/week). Compare that to $9.50 for a whey serve that bloats you for an hour — or $79/month for AG1 that doesn't even provide complete protein.</p>
+    </div>
+
+    <!-- Step 14: Scarcity -->
+    <div class="scarcity reveal">
+      <p>Launch batch: 1,584 bottles. Next EU production run: 6+ weeks. Subscribe & Save pricing locks at signup — if you cancel and rejoin, it returns to retail.</p>
+    </div>
+
+    <!-- Step 15: Guarantee -->
+    <div class="guarantee reveal">
+      <div class="guarantee-label">30-Day Performance Guarantee</div>
+      <p>Use Recov for 30 days following the protocol. If you don't experience <strong>measurably less DOMS and faster return to training</strong>, we'll refund the bottle. The mechanism either works for your body or it doesn't — we're confident enough to bet on it.</p>
+    </div>
+
+    <!-- Step 16: CTA -->
+    <div class="reveal" style="text-align: center; margin-top: 36px;">
+      <a href="https://recovfaster.com" class="cta-btn" target="_blank">
+        Start Your First Month
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+      </a>
+      <br>
+      <a href="https://recovfaster.com" class="cta-btn-outline" target="_blank">
+        Or Buy Once — $119.95
+      </a>
+      <p style="font-size: 11px; color: var(--tx-3); margin-top: 16px;">Afterpay available on orders $99+</p>
+    </div>
+  </section>
+
+  <!-- ═══ STEP 17: P.S. ═══ -->
+  <section class="ps">
+    <div class="ps-label">P.S.</div>
+    <p>Every training session you do without optimised peptide delivery is a session your body recovers from in <strong>7 days instead of 2</strong>. That's 5 lost training days per session. Over a month at 5 sessions/week, that's potentially 20+ sessions you don't get to do — not from injury, not from overtraining, from a protein source that's working against your biology.</p>
+    <p style="margin-top: 14px;">The launch batch is 1,584 bottles. <strong>Subscribe & Save pricing locks at $99.95/mo at signup.</strong> Once the batch sells through, the next production run is 6+ weeks away and the price returns to retail.</p>
+    <div style="margin-top: 20px;">
+      <a href="https://recovfaster.com" class="cta-btn" target="_blank">
+        Start Your First Month
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer>
+    <div class="fl">
+      <span class="logo-mark" style="font-size: 16px;">Recov</span>
+    </div>
+    <div class="fb">recovfaster.com &middot; 2026</div>
+  </footer>
+
+</div><!-- .wrap -->
+
+<script>
+/* ── Progress bar ── */
+const bar = document.getElementById('js-bar');
+window.addEventListener('scroll', () => {
+  const h = document.documentElement.scrollHeight - window.innerHeight;
+  bar.style.transform = 'scaleX(' + (h > 0 ? window.scrollY / h : 0) + ')';
+}, { passive: true });
+
+/* ── Hamburger ── */
+const hb = document.getElementById('hamburger-btn');
+const mn = document.getElementById('mobile-nav');
+hb.addEventListener('click', () => {
+  hb.classList.toggle('open');
+  mn.classList.toggle('open');
+  document.body.style.overflow = mn.classList.contains('open') ? 'hidden' : '';
+});
+mn.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+  hb.classList.remove('open');
+  mn.classList.remove('open');
+  document.body.style.overflow = '';
+}));
+
+/* ── Scroll reveals ── */
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal, .stagger').forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>

@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>57 Royal Albert Crescent — Waterbenders Case Study</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #26356C;
+    --blue: #0689F2;
+    --accent: #0863B4;
+    --white: #FFFFFF;
+    --cream: #F8F6F2;
+    --light-grey: #E8E6E2;
+    --text: #2A2A2A;
+    --text-light: #6B6B6B;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Lato', sans-serif;
+    color: var(--text);
+    background: var(--white);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4, h5 {
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  /* ── TOP BAR ── */
+  .topbar {
+    background: var(--navy);
+    color: var(--white);
+    padding: 12px 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+  .topbar .ref { opacity: 0.6; }
+
+  /* ── HERO ── */
+  .hero {
+    background: linear-gradient(135deg, var(--navy) 0%, #1a2550 100%);
+    color: var(--white);
+    padding: 80px 32px 60px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(6,137,242,0.08) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .hero .label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    opacity: 0.5;
+    margin-bottom: 24px;
+  }
+  .hero h1 {
+    font-size: clamp(28px, 5vw, 48px);
+    font-weight: 800;
+    line-height: 1.15;
+    margin-bottom: 16px;
+    letter-spacing: -0.5px;
+  }
+  .hero .sub {
+    font-size: 18px;
+    font-weight: 300;
+    opacity: 0.75;
+    max-width: 520px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  /* ── PROPERTY FACTS STRIP ── */
+  .facts-strip {
+    background: var(--cream);
+    border-top: 3px solid var(--blue);
+    padding: 28px 32px;
+    display: flex;
+    justify-content: center;
+    gap: 48px;
+    flex-wrap: wrap;
+  }
+  .fact {
+    text-align: center;
+  }
+  .fact .value {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1;
+  }
+  .fact .unit {
+    font-size: 13px;
+    color: var(--text-light);
+    margin-top: 6px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  /* ── SECTIONS ── */
+  .section {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 56px 32px;
+  }
+  .section-marker {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-marker::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--light-grey);
+  }
+  .section h2 {
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 20px;
+    line-height: 1.3;
+  }
+  .section p {
+    font-size: 16px;
+    line-height: 1.75;
+    color: var(--text);
+    margin-bottom: 16px;
+  }
+
+  /* ── BEFORE / AFTER ── */
+  .ba-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin: 40px 0;
+  }
+  .ba-card {
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--cream);
+    border: 1px solid var(--light-grey);
+  }
+  .ba-card .plate {
+    aspect-ratio: 4/3;
+    background: var(--light-grey);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  .ba-card .plate .placeholder-text {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--text-light);
+    opacity: 0.6;
+  }
+  .ba-card .plate-label {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 3px;
+    font-weight: 600;
+  }
+  .ba-card.before .plate-label {
+    background: rgba(42,42,42,0.7);
+    color: var(--white);
+  }
+  .ba-card.after .plate-label {
+    background: var(--blue);
+    color: var(--white);
+  }
+  .ba-card .caption {
+    padding: 14px 16px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    color: var(--text-light);
+    letter-spacing: 0.5px;
+  }
+  .ba-card .caption strong {
+    color: var(--navy);
+  }
+
+  /* ── SCOPE LIST ── */
+  .scope-list {
+    list-style: none;
+    margin: 24px 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .scope-list li {
+    font-size: 15px;
+    padding: 14px 18px;
+    background: var(--cream);
+    border-radius: 6px;
+    border-left: 3px solid var(--blue);
+    line-height: 1.4;
+  }
+  .scope-list li strong {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    color: var(--navy);
+    display: block;
+    font-size: 14px;
+    margin-bottom: 2px;
+  }
+
+  /* ── RESULT BANNER ── */
+  .result-banner {
+    background: linear-gradient(135deg, var(--navy) 0%, #1a2550 100%);
+    color: var(--white);
+    padding: 56px 32px;
+    text-align: center;
+  }
+  .result-banner .label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    opacity: 0.5;
+    margin-bottom: 20px;
+  }
+  .result-banner h2 {
+    font-size: clamp(24px, 4vw, 36px);
+    font-weight: 700;
+    margin-bottom: 16px;
+    line-height: 1.3;
+  }
+  .result-banner p {
+    font-size: 17px;
+    font-weight: 300;
+    opacity: 0.8;
+    max-width: 600px;
+    margin: 0 auto 32px;
+    line-height: 1.7;
+  }
+
+  /* ── CTA ── */
+  .cta-section {
+    background: var(--cream);
+    padding: 48px 32px;
+    text-align: center;
+  }
+  .cta-section h3 {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 8px;
+  }
+  .cta-section p {
+    font-size: 15px;
+    color: var(--text-light);
+    margin-bottom: 24px;
+  }
+  .cta-btn {
+    display: inline-block;
+    background: var(--blue);
+    color: var(--white);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 16px 40px;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .cta-btn:hover { background: var(--accent); }
+  .cta-phone {
+    display: block;
+    margin-top: 14px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--navy);
+    text-decoration: none;
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: var(--navy);
+    color: var(--white);
+    padding: 28px 32px;
+    text-align: center;
+    font-size: 13px;
+    opacity: 0.7;
+  }
+
+  /* ── DIVIDER ── */
+  .divider {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+  .divider hr {
+    border: none;
+    border-top: 1px solid var(--light-grey);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 640px) {
+    .facts-strip { gap: 24px; }
+    .fact .value { font-size: 22px; }
+    .ba-grid { grid-template-columns: 1fr; }
+    .scope-list { grid-template-columns: 1fr; }
+    .hero { padding: 56px 24px 40px; }
+    .section { padding: 40px 24px; }
+    .topbar { padding: 10px 20px; font-size: 11px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Top Bar -->
+<div class="topbar">
+  <span>Waterbenders &mdash; The Power of Clean&trade;</span>
+  <span class="ref">WB-2026-04-RAC57</span>
+</div>
+
+<!-- Hero -->
+<div class="hero">
+  <div class="label">Case Study</div>
+  <h1>57 Royal Albert Crescent<br>Sovereign Islands</h1>
+  <div class="sub">Full property rejuvenation. 762&thinsp;m&sup2;. Vendor-ready in 3 days.</div>
+</div>
+
+<!-- Property Facts -->
+<div class="facts-strip">
+  <div class="fact">
+    <div class="value">762</div>
+    <div class="unit">Square Metres</div>
+  </div>
+  <div class="fact">
+    <div class="value">3</div>
+    <div class="unit">Days to Completion</div>
+  </div>
+  <div class="fact">
+    <div class="value">4</div>
+    <div class="unit">Services Delivered</div>
+  </div>
+  <div class="fact">
+    <div class="value">1</div>
+    <div class="unit">Call. Done Right.</div>
+  </div>
+</div>
+
+<!-- Section 1: The Problem -->
+<div class="section">
+  <div class="section-marker">&sect; I &mdash; The Brief</div>
+  <h2>A prestige listing that needed to look the part</h2>
+  <p>
+    The agent had a problem every Gold Coast luxury agent knows: a Sovereign Islands waterfront property heading to market, but years of salt air, weather exposure, and deferred maintenance had left every exterior surface looking tired. Driveways stained, render dulled, windows hazed, gutters packed.
+  </p>
+  <p>
+    The vendor needed the property vendor-ready &mdash; not in weeks, not with multiple trades to coordinate &mdash; but fast, with a single point of contact and no follow-up required.
+  </p>
+</div>
+
+<div class="divider"><hr></div>
+
+<!-- Section 2: What We Did -->
+<div class="section">
+  <div class="section-marker">&sect; II &mdash; Scope of Works</div>
+  <h2>One call. Every surface. 762&thinsp;m&sup2;.</h2>
+  <p>
+    Waterbenders deployed a full property rejuvenation across every exterior surface of 57 Royal Albert Crescent. No subcontractors, no coordination headaches for the agent, no callbacks.
+  </p>
+  <ul class="scope-list">
+    <li>
+      <strong>Pressure Cleaning</strong>
+      Driveways, paths, pool surrounds, retaining walls &mdash; all hardscapes restored.
+    </li>
+    <li>
+      <strong>House Washing</strong>
+      Full render wash. Salt residue, mould, and weathering removed from all elevations.
+    </li>
+    <li>
+      <strong>Window Cleaning</strong>
+      Every window and glass surface, inside and out &mdash; streak-free for listing photography.
+    </li>
+    <li>
+      <strong>Gutters</strong>
+      Cleared, flushed, and inspected. Presentation-ready from every angle, including aerial drone shots.
+    </li>
+  </ul>
+</div>
+
+<div class="divider"><hr></div>
+
+<!-- Section 3: Before / After -->
+<div class="section">
+  <div class="section-marker">&sect; III &mdash; Before &amp; After</div>
+  <h2>The transformation</h2>
+  <p>
+    Every surface tells the story. These are real results from the 57 Royal Albert Crescent project &mdash; no stock photography, no renders.
+  </p>
+  <div class="ba-grid">
+    <div class="ba-card before">
+      <div class="plate">
+        <span class="plate-label">Before</span>
+        <span class="placeholder-text">Plate I &mdash; Driveway</span>
+      </div>
+      <div class="caption"><strong>Plate I</strong> &mdash; Driveway &amp; hardscape, pre-clean. Salt staining and tyre marks visible across full surface.</div>
+    </div>
+    <div class="ba-card after">
+      <div class="plate">
+        <span class="plate-label">After</span>
+        <span class="placeholder-text">Plate I &mdash; Driveway</span>
+      </div>
+      <div class="caption"><strong>Plate I</strong> &mdash; Driveway &amp; hardscape, post-clean. Restored to original finish, listing-ready.</div>
+    </div>
+    <div class="ba-card before">
+      <div class="plate">
+        <span class="plate-label">Before</span>
+        <span class="placeholder-text">Plate II &mdash; Facade</span>
+      </div>
+      <div class="caption"><strong>Plate II</strong> &mdash; Front elevation, pre-wash. Weathering and mould visible on render surfaces.</div>
+    </div>
+    <div class="ba-card after">
+      <div class="plate">
+        <span class="plate-label">After</span>
+        <span class="placeholder-text">Plate II &mdash; Facade</span>
+      </div>
+      <div class="caption"><strong>Plate II</strong> &mdash; Front elevation, post-wash. Clean render, sharp lines, photo-ready.</div>
+    </div>
+  </div>
+  <p style="font-size: 13px; color: var(--text-light); text-align: center; margin-top: 8px;">
+    Image placeholders &mdash; swap with approved photography from the Waterbenders portfolio.
+  </p>
+</div>
+
+<div class="divider"><hr></div>
+
+<!-- Section 4: The Result -->
+<div class="result-banner">
+  <div class="label">&sect; IV &mdash; The Result</div>
+  <h2>Vendor-ready in 3 days.<br>No follow-up needed.</h2>
+  <p>
+    762 square metres of exterior surfaces restored to presentation standard. The agent had listing photography scheduled for day four. Every surface was ready. One invoice. One point of contact. Zero callbacks.
+  </p>
+</div>
+
+<!-- CTA -->
+<div class="cta-section">
+  <h3>Free On-Site Assessment</h3>
+  <p>Hand over the keys. Expect perfection.</p>
+  <a href="tel:1300396576" class="cta-btn">Book Your Assessment</a>
+  <a href="tel:1300396576" class="cta-phone">1300 396 576</a>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  Waterbenders &mdash; The Power of Clean&trade; &nbsp;|&nbsp; Gold Coast &amp; Brisbane &nbsp;|&nbsp; waterbenders.com.au
+</div>
+
+</body>
+</html>
