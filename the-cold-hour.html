@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Cold Hour — A recovery club for people who run on hard mode</title>
+<style>
+:root{
+  --bone:#F4F1EC;
+  --ink:#14181C;
+  --ink-soft:#1c2228;
+  --ice:#9DB6C4;
+  --ember:#B5562E;
+  --bone-dim:rgba(244,241,236,0.62);
+  --ink-dim:rgba(20,24,28,0.62);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:"Helvetica Neue",Arial,sans-serif;
+  background:var(--ink);
+  color:var(--bone);
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+  line-height:1.5;
+}
+.wrap{max-width:1280px;margin:0 auto;padding:0 32px}
+.eyebrow{
+  font-size:12px;letter-spacing:0.32em;text-transform:uppercase;
+  font-weight:600;opacity:0.7;
+}
+.display{
+  font-weight:800;
+  letter-spacing:-0.03em;
+  line-height:0.92;
+  text-transform:uppercase;
+}
+
+/* ---------- NAV ---------- */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:20px 32px;
+  mix-blend-mode:difference;
+  color:#fff;
+}
+nav .mark{font-weight:800;letter-spacing:0.04em;font-size:15px;text-transform:uppercase}
+nav .mark span{display:block;font-size:8px;letter-spacing:0.4em;opacity:0.8;font-weight:600}
+nav .micro{font-size:11px;letter-spacing:0.16em;text-transform:uppercase;opacity:0.85;display:none}
+nav .nav-cta{
+  font-size:11px;letter-spacing:0.18em;text-transform:uppercase;font-weight:700;
+  border:1px solid rgba(255,255,255,0.6);padding:10px 18px;border-radius:40px;
+  color:#fff;text-decoration:none;transition:all .3s;
+}
+nav .nav-cta:hover{background:#fff;color:#000}
+@media(min-width:880px){nav .micro{display:block}}
+
+/* ---------- HERO ---------- */
+.hero{
+  position:relative;min-height:100vh;display:flex;flex-direction:column;
+  justify-content:flex-end;overflow:hidden;
+  padding:0 0 56px;
+  background:radial-gradient(120% 90% at 70% 10%, #243038 0%, #161b20 45%, #0c0f12 100%);
+}
+.hero-steam{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(40% 50% at 20% 80%, rgba(157,182,196,0.18), transparent 70%),
+    radial-gradient(50% 60% at 85% 30%, rgba(157,182,196,0.10), transparent 70%);
+  animation:drift 18s ease-in-out infinite alternate;
+}
+@keyframes drift{0%{transform:translate3d(0,0,0) scale(1)}100%{transform:translate3d(-3%,-2%,0) scale(1.08)}}
+.hero-vsignal{
+  position:absolute;inset:0;
+  background:linear-gradient(180deg, rgba(12,15,18,0.55) 0%, rgba(12,15,18,0.1) 35%, rgba(12,15,18,0.85) 100%);
+}
+.hero-lines{position:absolute;inset:0;opacity:0.25;
+  background-image:linear-gradient(rgba(157,182,196,0.08) 1px,transparent 1px);
+  background-size:100% 7px;mix-blend-mode:overlay;}
+.hero-inner{position:relative;z-index:3}
+.hero .thesis-eyebrow{color:var(--ice);margin-bottom:24px}
+.hero h1{
+  font-size:clamp(58px,15vw,230px);
+  line-height:0.82;font-weight:800;letter-spacing:-0.04em;
+  text-transform:uppercase;
+}
+.hero h1 .the{display:block;font-size:clamp(13px,1.4vw,20px);letter-spacing:0.5em;font-weight:600;margin-bottom:8px;color:var(--bone-dim)}
+.hero .lede{
+  margin-top:34px;max-width:640px;
+  font-size:clamp(20px,2.4vw,30px);font-weight:600;letter-spacing:-0.01em;line-height:1.18;
+}
+.hero .sub{margin-top:14px;font-size:15px;letter-spacing:0.06em;color:var(--bone-dim)}
+.hero-actions{margin-top:40px;display:flex;align-items:center;gap:26px;flex-wrap:wrap}
+.btn-primary{
+  display:inline-flex;align-items:center;gap:14px;
+  background:var(--ice);color:var(--ink);
+  font-weight:800;font-size:14px;letter-spacing:0.12em;text-transform:uppercase;
+  padding:18px 30px;border-radius:48px;text-decoration:none;
+  transition:transform .4s cubic-bezier(.2,.8,.2,1), background .3s;
+  will-change:transform;
+}
+.btn-primary:hover{background:#fff;transform:translateY(-2px)}
+.btn-primary .dot{width:7px;height:7px;border-radius:50%;background:var(--ember)}
+.scrollcue{font-size:11px;letter-spacing:0.22em;text-transform:uppercase;opacity:0.55;display:flex;align-items:center;gap:10px}
+.scrollcue::before{content:"";width:34px;height:1px;background:currentColor}
+
+/* ---------- THESIS ---------- */
+.thesis{
+  background:var(--bone);color:var(--ink);
+  padding:clamp(120px,18vw,240px) 0;
+}
+.thesis .wrap{max-width:1180px}
+.thesis h2{
+  font-size:clamp(36px,7.2vw,118px);font-weight:800;letter-spacing:-0.035em;line-height:0.96;
+}
+.thesis h2 em{font-style:normal;color:var(--ember)}
+.thesis .note{margin-top:40px;max-width:520px;font-size:17px;color:var(--ink-dim);letter-spacing:0.01em}
+
+/* ---------- MODALITY INDEX ---------- */
+.modalities{background:var(--bone)}
+.mod{
+  min-height:92vh;display:flex;align-items:center;position:relative;
+  border-top:1px solid rgba(20,24,28,0.12);
+  transition:background-color 1s ease, color 1s ease;
+}
+.mod .wrap{display:grid;grid-template-columns:1fr;gap:30px;width:100%}
+.mod .num{font-size:clamp(60px,12vw,180px);font-weight:800;line-height:0.8;letter-spacing:-0.04em;opacity:0.92}
+.mod .m-body{max-width:560px}
+.mod h3{font-size:clamp(30px,5vw,64px);font-weight:800;text-transform:uppercase;letter-spacing:-0.02em;line-height:0.96;margin-bottom:18px}
+.mod p{font-size:17px;line-height:1.55;opacity:0.78}
+.mod .spec{margin-top:22px;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;font-weight:700}
+/* temperature poles */
+.mod.m01{background:#efe7df;color:var(--ink)}            /* sauna warm */
+.mod.m01 .num,.mod.m01 .spec{color:var(--ember)}
+.mod.m02{background:var(--ink);color:var(--bone)}        /* plunge cold */
+.mod.m02 .num,.mod.m02 .spec{color:var(--ice)}
+.mod.m03{background:#2a1a14;color:#f2e4dc}               /* red-light ember */
+.mod.m03 .num,.mod.m03 .spec{color:var(--ember)}
+.mod.m04{background:#1b232a;color:var(--bone)}           /* breath cool */
+.mod.m04 .num,.mod.m04 .spec{color:var(--ice)}
+@media(min-width:840px){
+  .mod .wrap{grid-template-columns:0.9fr 1.1fr;align-items:center;gap:60px}
+}
+
+/* ---------- MECHANISM ---------- */
+.mechanism{background:var(--bone);color:var(--ink);padding:clamp(110px,15vw,200px) 0}
+.mechanism .eyebrow{color:var(--ember)}
+.mechanism h2{font-size:clamp(34px,5.6vw,82px);font-weight:800;letter-spacing:-0.03em;line-height:0.96;margin:22px 0 18px;max-width:900px}
+.mechanism .mlede{max-width:680px;font-size:18px;line-height:1.55;color:var(--ink-dim)}
+.compare{display:grid;grid-template-columns:1fr;gap:1px;margin-top:64px;background:rgba(20,24,28,0.14);border:1px solid rgba(20,24,28,0.14)}
+.compare .col{background:var(--bone);padding:38px 32px}
+.compare .lbl{font-size:11px;letter-spacing:0.2em;text-transform:uppercase;font-weight:700;color:var(--ember);margin-bottom:18px}
+.compare .row{display:flex;justify-content:space-between;gap:16px;padding:16px 0;border-bottom:1px solid rgba(20,24,28,0.12);font-size:15px}
+.compare .row:last-child{border-bottom:none}
+.compare .home{color:var(--ink-dim)}
+.compare .us{font-weight:700;text-align:right}
+.compare .us .hot{color:var(--ice);background:var(--ink);padding:2px 8px;border-radius:4px;font-size:13px}
+@media(min-width:760px){.compare{grid-template-columns:1fr 1fr}}
+
+/* ---------- THE HOUR ---------- */
+.hour{background:var(--ink);color:var(--bone);padding:clamp(110px,15vw,200px) 0;position:relative;overflow:hidden}
+.hour::before{content:"";position:absolute;inset:0;background:radial-gradient(60% 60% at 80% 0%, rgba(181,86,46,0.16), transparent 70%);}
+.hour .wrap{position:relative;z-index:2}
+.hour .eyebrow{color:var(--ice)}
+.hour h2{font-size:clamp(34px,5.6vw,84px);font-weight:800;letter-spacing:-0.03em;line-height:0.96;margin:20px 0 70px;max-width:760px}
+.hour h2 em{font-style:normal;color:var(--ember)}
+.step{display:grid;grid-template-columns:1fr;gap:14px;padding:42px 0;border-top:1px solid rgba(157,182,196,0.22)}
+.step .t{font-size:13px;letter-spacing:0.18em;text-transform:uppercase;font-weight:700;color:var(--ice)}
+.step h4{font-size:clamp(22px,3.2vw,38px);font-weight:800;text-transform:uppercase;letter-spacing:-0.02em}
+.step p{font-size:16px;line-height:1.55;color:var(--bone-dim);max-width:560px}
+@media(min-width:840px){.step{grid-template-columns:160px 1fr;gap:50px;align-items:baseline}.step .t{padding-top:8px}}
+.voc{margin-top:80px;text-align:center}
+.voc blockquote{font-size:clamp(26px,4.4vw,56px);font-weight:800;letter-spacing:-0.025em;line-height:1.02;max-width:920px;margin:0 auto}
+.voc blockquote span{color:var(--ice)}
+.voc cite{display:block;margin-top:24px;font-style:normal;font-size:12px;letter-spacing:0.2em;text-transform:uppercase;opacity:0.6}
+
+/* ---------- OFFER ---------- */
+.offer{background:var(--bone);color:var(--ink);padding:clamp(110px,15vw,200px) 0}
+.offer .head{max-width:760px;margin-bottom:64px}
+.offer .eyebrow{color:var(--ember)}
+.offer h2{font-size:clamp(34px,5.6vw,80px);font-weight:800;letter-spacing:-0.03em;line-height:0.96;margin-top:20px}
+.cards{display:grid;grid-template-columns:1fr;gap:24px;align-items:stretch}
+@media(min-width:900px){.cards{grid-template-columns:1.15fr 1fr}}
+.card{border:1px solid rgba(20,24,28,0.18);border-radius:18px;padding:44px 38px;display:flex;flex-direction:column}
+.card.lead{background:var(--ink);color:var(--bone);border-color:var(--ink)}
+.card .ctag{font-size:11px;letter-spacing:0.2em;text-transform:uppercase;font-weight:700;margin-bottom:24px}
+.card.lead .ctag{color:var(--ice)}
+.card.found .ctag{color:var(--ember)}
+.card h3{font-size:clamp(28px,3.6vw,42px);font-weight:800;text-transform:uppercase;letter-spacing:-0.02em;line-height:0.96}
+.card .price{display:flex;align-items:baseline;gap:14px;margin:20px 0 8px}
+.card .price b{font-size:46px;font-weight:800;letter-spacing:-0.03em}
+.card .price s{opacity:0.5;font-size:18px}
+.card .price small{font-size:13px;letter-spacing:0.04em;opacity:0.7}
+.card ul{list-style:none;margin:28px 0 34px;display:flex;flex-direction:column;gap:16px}
+.card li{display:flex;gap:14px;font-size:15px;line-height:1.45}
+.card li::before{content:"";flex:0 0 7px;width:7px;height:7px;border-radius:50%;margin-top:8px;background:var(--ember)}
+.card.lead li::before{background:var(--ice)}
+.card .scar{font-size:13px;letter-spacing:0.04em;font-weight:600;color:var(--ember);margin-bottom:24px;line-height:1.4}
+.card .cbtn{margin-top:auto}
+.btn-dark{display:inline-flex;align-items:center;gap:12px;background:var(--ice);color:var(--ink);font-weight:800;font-size:13px;letter-spacing:0.12em;text-transform:uppercase;padding:17px 28px;border-radius:48px;text-decoration:none;transition:transform .35s,background .3s}
+.btn-dark:hover{background:#fff;transform:translateY(-2px)}
+.btn-line{display:inline-flex;align-items:center;gap:12px;border:1px solid var(--ink);color:var(--ink);font-weight:800;font-size:13px;letter-spacing:0.12em;text-transform:uppercase;padding:16px 28px;border-radius:48px;text-decoration:none;transition:all .3s}
+.btn-line:hover{background:var(--ink);color:var(--bone)}
+.anchor{margin-top:56px;display:flex;flex-wrap:wrap;gap:14px;font-size:13px;letter-spacing:0.02em;color:var(--ink-dim)}
+.anchor span{border:1px solid rgba(20,24,28,0.2);padding:9px 16px;border-radius:40px}
+.anchor span b{color:var(--ink)}
+
+/* ---------- THE SIX / PROOF ---------- */
+.proof{background:var(--ink);color:var(--bone);padding:clamp(110px,15vw,200px) 0;position:relative;overflow:hidden}
+.proof::before{content:"";position:absolute;inset:0;background:radial-gradient(50% 70% at 15% 20%, rgba(157,182,196,0.12), transparent 70%)}
+.proof .wrap{position:relative;z-index:2}
+.proof .eyebrow{color:var(--ice)}
+.proof .six-h{font-size:clamp(40px,8vw,120px);font-weight:800;letter-spacing:-0.04em;line-height:0.86;text-transform:uppercase;margin:22px 0 16px}
+.proof .six-h em{font-style:normal;color:var(--ice)}
+.proof .six-sub{max-width:600px;font-size:17px;color:var(--bone-dim);line-height:1.5}
+.quotes{display:grid;grid-template-columns:1fr;gap:20px;margin-top:72px}
+@media(min-width:760px){.quotes{grid-template-columns:repeat(3,1fr)}}
+.q{border:1px solid rgba(157,182,196,0.22);border-radius:14px;padding:30px 26px;display:flex;flex-direction:column;gap:18px}
+.q p{font-size:17px;line-height:1.45;font-weight:600}
+.q footer{font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ice);opacity:0.85}
+.wall{margin-top:72px;border-top:1px solid rgba(157,182,196,0.22);padding-top:42px}
+.wall .lbl{font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--ice);margin-bottom:24px}
+.wall .names{display:flex;flex-wrap:wrap;gap:14px 30px;font-size:clamp(18px,2.6vw,30px);font-weight:800;letter-spacing:-0.02em;text-transform:uppercase}
+.wall .names span{opacity:0.85}
+.wall .names .you{color:var(--ember);border-bottom:2px solid var(--ember)}
+
+/* ---------- SPACE ---------- */
+.space{background:var(--bone);color:var(--ink);padding:clamp(110px,15vw,200px) 0}
+.space .eyebrow{color:var(--ember)}
+.space h2{font-size:clamp(34px,5.6vw,82px);font-weight:800;letter-spacing:-0.03em;line-height:0.96;margin:20px 0 60px;max-width:780px}
+.tiles{display:grid;grid-template-columns:1fr;gap:18px}
+@media(min-width:760px){.tiles{grid-template-columns:repeat(3,1fr);grid-auto-rows:300px}.tiles .big{grid-column:span 2;grid-row:span 2}}
+.tile{border-radius:16px;padding:32px;display:flex;flex-direction:column;justify-content:flex-end;min-height:230px;position:relative;overflow:hidden;color:#fff}
+.tile h4{font-size:22px;font-weight:800;text-transform:uppercase;letter-spacing:-0.01em;position:relative;z-index:2}
+.tile p{font-size:14px;opacity:0.85;margin-top:8px;position:relative;z-index:2;max-width:320px}
+.tile.t1{background:radial-gradient(120% 120% at 20% 10%, #2b3942, #11161a)}
+.tile.t2{background:radial-gradient(120% 120% at 80% 0%, #3a2017, #160d09)}
+.tile.t3{background:radial-gradient(120% 120% at 30% 20%, #243038, #0f1316)}
+.tile.t4{background:radial-gradient(120% 120% at 70% 80%, #4a2a1d, #1a0f0a)}
+.tile .grain{position:absolute;inset:0;opacity:0.4;background:radial-gradient(40% 50% at 60% 30%, rgba(157,182,196,0.18), transparent 70%)}
+
+/* ---------- FINAL CTA ---------- */
+.final{background:var(--ink);color:var(--bone);padding:clamp(120px,18vw,240px) 0;text-align:center;position:relative;overflow:hidden}
+.final::before{content:"";position:absolute;inset:0;background:radial-gradient(60% 80% at 50% 120%, rgba(157,182,196,0.18), transparent 70%)}
+.final .wrap{position:relative;z-index:2}
+.final h2{font-size:clamp(44px,11vw,160px);font-weight:800;letter-spacing:-0.04em;line-height:0.86;text-transform:uppercase}
+.final h2 .the{display:block;font-size:clamp(12px,1.4vw,18px);letter-spacing:0.5em;color:var(--bone-dim);margin-bottom:10px;font-weight:600}
+.final p{margin:30px auto 0;max-width:520px;font-size:18px;color:var(--bone-dim);line-height:1.45}
+.final .btn-primary{margin-top:44px}
+
+/* ---------- ENQUIRY ---------- */
+.enq{background:var(--bone);color:var(--ink);padding:clamp(90px,12vw,160px) 0;border-top:1px solid rgba(20,24,28,0.1)}
+.enq .grid{display:grid;grid-template-columns:1fr;gap:50px}
+@media(min-width:840px){.enq .grid{grid-template-columns:1fr 1fr;gap:80px;align-items:start}}
+.enq h3{font-size:clamp(26px,3.6vw,44px);font-weight:800;text-transform:uppercase;letter-spacing:-0.02em;line-height:0.98}
+.enq .eyebrow{color:var(--ember);margin-bottom:18px}
+.enq p{margin-top:18px;font-size:16px;color:var(--ink-dim);max-width:420px;line-height:1.5}
+.enq form{display:flex;flex-direction:column;gap:16px}
+.enq label{font-size:11px;letter-spacing:0.16em;text-transform:uppercase;font-weight:700;margin-bottom:7px;display:block}
+.enq input,.enq textarea,.enq select{width:100%;padding:15px 16px;border:1px solid rgba(20,24,28,0.25);border-radius:10px;background:transparent;font:inherit;font-size:15px;color:var(--ink)}
+.enq input:focus,.enq textarea:focus,.enq select:focus{outline:none;border-color:var(--ember)}
+.enq button{margin-top:8px;background:var(--ink);color:var(--bone);border:none;font-weight:800;font-size:13px;letter-spacing:0.12em;text-transform:uppercase;padding:17px 28px;border-radius:48px;cursor:pointer;transition:background .3s}
+.enq button:hover{background:var(--ember)}
+
+/* ---------- FOOTER ---------- */
+footer{background:var(--ink);color:var(--bone);padding:70px 0 50px;border-top:1px solid rgba(157,182,196,0.18)}
+footer .top{display:grid;grid-template-columns:1fr;gap:40px}
+@media(min-width:760px){footer .top{grid-template-columns:1.4fr 1fr 1fr 1fr}}
+footer .fmark{font-weight:800;font-size:24px;text-transform:uppercase;letter-spacing:0.02em}
+footer .fmark span{display:block;font-size:9px;letter-spacing:0.4em;opacity:0.7;font-weight:600}
+footer .fmark p{margin-top:18px;font-size:14px;color:var(--bone-dim);max-width:280px;line-height:1.5}
+footer .col h5{font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--ice);margin-bottom:18px}
+footer .col a{display:block;color:var(--bone-dim);text-decoration:none;font-size:14px;margin-bottom:12px;transition:color .25s}
+footer .col a:hover{color:var(--bone)}
+footer .base{margin-top:60px;padding-top:28px;border-top:1px solid rgba(157,182,196,0.16);display:flex;flex-wrap:wrap;justify-content:space-between;gap:14px;font-size:12px;letter-spacing:0.06em;color:var(--bone-dim)}
+
+/* ---------- STICKY MOBILE CTA ---------- */
+.sticky-cta{position:fixed;bottom:0;left:0;right:0;z-index:90;padding:14px 18px;background:rgba(12,15,18,0.92);backdrop-filter:blur(10px);border-top:1px solid rgba(157,182,196,0.2);display:none}
+.sticky-cta a{display:block;text-align:center;background:var(--ice);color:var(--ink);font-weight:800;font-size:13px;letter-spacing:0.1em;text-transform:uppercase;padding:15px;border-radius:44px;text-decoration:none}
+@media(max-width:760px){.sticky-cta{display:block} body{padding-bottom:74px}}
+
+/* ---------- REVEAL ---------- */
+.reveal{opacity:0;transform:translateY(34px);transition:opacity 1s cubic-bezier(.2,.8,.2,1),transform 1s cubic-bezier(.2,.8,.2,1)}
+.reveal.in{opacity:1;transform:none}
+.reveal.d1{transition-delay:.1s}.reveal.d2{transition-delay:.2s}.reveal.d3{transition-delay:.3s}.reveal.d4{transition-delay:.4s}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;scroll-behavior:auto!important}
+  .reveal{opacity:1!important;transform:none!important;transition:none!important}
+  .hero-steam{animation:none!important}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="mark"><span>The</span>Cold Hour</div>
+  <div class="micro">A recovery club for people who run on hard mode</div>
+  <a href="#book" class="nav-cta">Book Your First Hour</a>
+</nav>
+
+<!-- 1. HERO -->
+<header class="hero">
+  <div class="hero-steam"></div>
+  <div class="hero-vsignal"></div>
+  <div class="hero-lines"></div>
+  <div class="hero-inner wrap">
+    <div class="thesis-eyebrow eyebrow">Gold Coast · Members capped on purpose</div>
+    <h1><span class="the">The</span>Cold Hour</h1>
+    <p class="lede">The hardest hour of your day. On purpose.</p>
+    <p class="sub">Walk in wired. Walk out clear.</p>
+    <div class="hero-actions">
+      <a href="#book" class="btn-primary magnetic"><span class="dot"></span>Book Your First Hour — $39</a>
+      <span class="scrollcue">Scroll</span>
+    </div>
+  </div>
+</header>
+
+<!-- 2. THESIS / OPEN LOOP -->
+<section class="thesis reveal">
+  <div class="wrap">
+    <h2>Anyone can buy an ice bath.<br><em>Almost no one keeps using it.</em></h2>
+    <p class="note">The tub in the garage felt like a breakthrough for three weeks. Then it became a cold box you walk past. The cold was never the problem. Showing up was.</p>
+  </div>
+</section>
+
+<!-- 3. MODALITY INDEX -->
+<section class="modalities" id="modalities">
+  <div class="mod m01">
+    <div class="wrap">
+      <div class="num reveal">01</div>
+      <div class="m-body reveal d1">
+        <h3>Sauna</h3>
+        <p>The heat does the loosening. You pick your bench, drop your shoulders, and let the day burn off before the hard part. This is where the hour begins — not with shock, with permission.</p>
+        <div class="spec">Heat first · then the cold means something</div>
+      </div>
+    </div>
+  </div>
+  <div class="mod m02">
+    <div class="wrap">
+      <div class="num reveal">02</div>
+      <div class="m-body reveal d1">
+        <h3>Plunge</h3>
+        <p>Held sub-5°C, on a visible thermometer, every session. Not the 12-21°C your shower bottoms out at. A coach counts you through every breath, and you decide how deep you go — every time.</p>
+        <div class="spec">Sub-5°C · displayed · guided</div>
+      </div>
+    </div>
+  </div>
+  <div class="mod m03">
+    <div class="wrap">
+      <div class="num reveal">03</div>
+      <div class="m-body reveal d1">
+        <h3>Red-Light</h3>
+        <p>The warm return. After the plunge, the body wants to come back online slowly. Red-light is the bridge between the shock and the calm — the part most people skip at home, and the part that makes the high land.</p>
+        <div class="spec">The reset, not an add-on</div>
+      </div>
+    </div>
+  </div>
+  <div class="mod m04">
+    <div class="wrap">
+      <div class="num reveal">04</div>
+      <div class="m-body reveal d1">
+        <h3>Breath</h3>
+        <p>The whole loop is held together by the breath. It is the difference between surviving the cold and using it. Guided, paced, controlled — until six minutes in the plunge stops sounding impossible.</p>
+        <div class="spec">The skill the tub never taught you</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. THE MECHANISM -->
+<section class="mechanism reveal">
+  <div class="wrap">
+    <p class="eyebrow">The Mechanism</p>
+    <h2>Why this works when the tub in your garage didn't.</h2>
+    <p class="mlede">Most recovery is a tub you stop using by week three. The Cold Hour is a booked, guided, sub-5°C hot-cold contrast loop — same time, same coach who knows your name, every week — so the high after actually becomes a habit instead of a thing you meant to do.</p>
+    <div class="compare reveal d1">
+      <div class="col">
+        <div class="lbl">At home</div>
+        <div class="row"><span class="home">A shower that bottoms out at 12-21°C</span><span class="us"><span class="hot">Sub-5°C</span>, held, on a thermometer</span></div>
+        <div class="row"><span class="home">Nobody — you talk yourself out of it</span><span class="us">A coach who knows your name & your streak</span></div>
+        <div class="row"><span class="home">Once, when you feel like it</span><span class="us">Booked. Same time. Every week.</span></div>
+        <div class="row"><span class="home">A single cold dunk</span><span class="us">The full sauna → plunge → red-light → breath loop</span></div>
+      </div>
+      <div class="col">
+        <div class="lbl">What that buys you</div>
+        <div class="row"><span class="home">The high after — guaranteed, not hoped for</span><span class="us">It happens</span></div>
+        <div class="row"><span class="home">An hour you can't sleepwalk through</span><span class="us">It counts</span></div>
+        <div class="row"><span class="home">Accountability a $5k setup can't deliver</span><span class="us">It sticks</span></div>
+        <div class="row"><span class="home">A room full of people doing it with you</span><span class="us">It becomes who you are</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. THE HOUR -->
+<section class="hour">
+  <div class="wrap">
+    <p class="eyebrow reveal">The Hour</p>
+    <h2 class="reveal d1">What your first hour actually feels like — <em>minute by minute</em>.</h2>
+
+    <div class="step reveal"><div class="t">Min 00 · Arrive</div><div><h4>Tea, not a turnstile</h4><p>You arrive to a quiet room and a warm drink. Your coach introduces themselves, learns your name, and tells you exactly what the next sixty minutes hold. No experience needed. Nothing to prove yet.</p></div></div>
+    <div class="step reveal"><div class="t">Min 10 · Sauna</div><div><h4>Choose your bench</h4><p>Heat first. You settle in, breathe, and let the noise of the day come down. This is the part that makes the cold worth it.</p></div></div>
+    <div class="step reveal"><div class="t">Min 30 · Plunge</div><div><h4>You're always in charge of how deep you go</h4><p>Sub-5°C. Your coach counts you in and holds you through every breath. There is no dunking, no shoving, no surprise. "As deep as you want" is the rule, not the upsell.</p></div></div>
+    <div class="step reveal"><div class="t">Min 45 · Return</div><div><h4>The warm bridge</h4><p>Out of the cold and into red-light. The body comes back online. This is where the calm arrives — the thing the home dunk never gave you because you skipped it.</p></div></div>
+    <div class="step reveal"><div class="t">Min 55 · Reset</div><div><h4>Walk out a different person than walked in</h4><p>Five minutes to sit in it. Then back to your day — clear, level, and quietly proud you did the hard thing on purpose.</p></div></div>
+
+    <div class="voc reveal d1">
+      <blockquote>"I always feel better <span>walking out</span> than walking in."</blockquote>
+      <cite>— What every member says by week two</cite>
+    </div>
+  </div>
+</section>
+
+<!-- 6. THE OFFER -->
+<section class="offer" id="book">
+  <div class="wrap">
+    <div class="head reveal">
+      <p class="eyebrow">Two doors</p>
+      <h2>Start with one hour. Decide nothing else today.</h2>
+    </div>
+    <div class="cards">
+      <div class="card lead reveal d1">
+        <div class="ctag">Door 01 — The First Hour</div>
+        <h3>Your First Cold Hour</h3>
+        <div class="price"><b>$39</b><s>$69</s><small>one fully guided session</small></div>
+        <ul>
+          <li>Tea-room arrival → sauna → guided plunge → red-light → reset, in one flow.</li>
+          <li>A facilitator walks you through every breath. No experience needed.</li>
+          <li>Walk out, don't feel the difference? We refund it on the spot. No form — just tell your coach.</li>
+        </ul>
+        <div class="cbtn"><a href="#enquiry" class="btn-dark"><span style="width:7px;height:7px;border-radius:50%;background:var(--ember);display:inline-block"></span>Book Your First Hour</a></div>
+      </div>
+      <div class="card found reveal d2">
+        <div class="ctag">Door 02 — The 100</div>
+        <h3>The Founding 100</h3>
+        <div class="price"><b>$44</b><small>/week, founding rate · locked for life</small></div>
+        <p class="scar">When the first 100 are full, the founding rate is gone. We cap membership to protect the room.</p>
+        <ul>
+          <li>The 14-Day Switch-On: your first 3 sessions pre-booked with you and a coach — so week-three drop-off never happens.</li>
+          <li>2 plus-one passes every month. Bring the people who run on hard mode with you.</li>
+          <li>Credits roll over. An unused week never disappears.</li>
+          <li>Founding badge + first dibs on The Six. 3-month minimum, then month-to-month. No lock-in trap.</li>
+        </ul>
+        <div class="cbtn"><a href="#enquiry" class="btn-line">Enquire About The 100</a></div>
+      </div>
+    </div>
+    <div class="anchor reveal d2">
+      <span>vs a <b>$5k home setup</b> you'll abandon</span>
+      <span>vs a <b>$250 therapy hour</b></span>
+      <span>vs a <b>Friday bar tab</b> you regret Saturday</span>
+      <span>The cheapest of the four — and the only one that compounds.</span>
+    </div>
+  </div>
+</section>
+
+<!-- 7. THE SIX / PROOF -->
+<section class="proof">
+  <div class="wrap">
+    <p class="eyebrow reveal">The Six</p>
+    <h2 class="six-h reveal d1">Six minutes. Breath controlled. <em>Unassisted.</em></h2>
+    <p class="six-sub reveal d1">It's the thing members chase. Hold the plunge for six minutes, breath under control, no help — and your name goes on the wall. Not a gimmick. A standard.</p>
+
+    <div class="quotes">
+      <div class="q reveal d1"><p>"I've owned a tub for two years. I've used this club more in a month than the tub all year. The booking is the whole trick."</p><footer>Founder · trains 5x · Burleigh</footer></div>
+      <div class="q reveal d2"><p>"I came for the sleep, not the abs. First time in years I reset my nervous system and it actually held."</p><footer>The hour calms her down · Mermaid</footer></div>
+      <div class="q reveal d3"><p>"I needed somewhere that isn't a bar. Found a room of people doing the hard thing on a Saturday. That's my third place now."</p><footer>Sober-curious · Palm Beach</footer></div>
+    </div>
+
+    <div class="wall reveal d1">
+      <div class="lbl">The Six · Founding wall</div>
+      <div class="names">
+        <span>D. Mercer</span><span>K. Pereira</span><span>J. Walsh</span><span>A. Nguyen</span><span>L. Ferraro</span><span>T. Okoro</span><span class="you">Your name here</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 8. SPACE -->
+<section class="space">
+  <div class="wrap">
+    <p class="eyebrow reveal">The Space</p>
+    <h2 class="reveal d1">The room is the product. We built it to make you come back.</h2>
+    <div class="tiles">
+      <div class="tile t1 big reveal"><div class="grain"></div><h4>The Plunge Room</h4><p>Sub-5°C, held and displayed. Glacial-still, lit low, built for the breath — not for a photo.</p></div>
+      <div class="tile t2 reveal d1"><div class="grain"></div><h4>The Sauna</h4><p>Choose your bench. Heat that loosens before the hard part.</p></div>
+      <div class="tile t3 reveal d2"><div class="grain"></div><h4>The Tea Room</h4><p>You arrive to calm, not a counter.</p></div>
+      <div class="tile t4 reveal d1"><div class="grain"></div><h4>Red-Light Reset</h4><p>The warm bridge home. Gold Coast · members only.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 9. FINAL CTA -->
+<section class="final">
+  <div class="wrap">
+    <h2><span class="the">The</span>Do the hard thing<br>on purpose.</h2>
+    <p>One booked, guided hour. A coach who knows your name. The high that actually becomes a habit.</p>
+    <a href="#enquiry" class="btn-primary magnetic"><span class="dot"></span>Book Your First Hour — $39</a>
+  </div>
+</section>
+
+<!-- ENQUIRY -->
+<section class="enq" id="enquiry">
+  <div class="wrap">
+    <div class="grid">
+      <div class="reveal">
+        <p class="eyebrow">Start here</p>
+        <h3>Book the first hour, or ask about The 100.</h3>
+        <p>Tell us when works and a coach will lock in your session. Founding membership is consultative — we'll talk before anyone joins, because we cap the room.</p>
+      </div>
+      <form class="reveal d1" onsubmit="return false;">
+        <div>
+          <label for="n">Name</label>
+          <input id="n" type="text" placeholder="First and last" required>
+        </div>
+        <div>
+          <label for="e">Email</label>
+          <input id="e" type="email" placeholder="you@email.com" required>
+        </div>
+        <div>
+          <label for="i">I'm here to</label>
+          <select id="i">
+            <option>Book my First Hour — $39</option>
+            <option>Ask about The Founding 100</option>
+            <option>Both — start with the First Hour</option>
+          </select>
+        </div>
+        <div>
+          <label for="m">Anything we should know?</label>
+          <textarea id="m" rows="3" placeholder="Preferred days / times, or a question."></textarea>
+        </div>
+        <button type="submit">Book Your First Hour</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="top">
+      <div class="fmark">
+        <span>The</span>Cold Hour
+        <p>A recovery club for people who run on hard mode. Gold Coast. Membership capped to protect the room.</p>
+      </div>
+      <div class="col">
+        <h5>Pages</h5>
+        <a href="#modalities">The Modalities</a>
+        <a href="#book">The Offer</a>
+        <a href="#enquiry">Book</a>
+      </div>
+      <div class="col">
+        <h5>Services</h5>
+        <a href="#modalities">Sauna</a>
+        <a href="#modalities">Cold Plunge</a>
+        <a href="#modalities">Red-Light</a>
+        <a href="#modalities">Guided Breath</a>
+      </div>
+      <div class="col">
+        <h5>Quick Links</h5>
+        <a href="#book">First Hour — $39</a>
+        <a href="#book">The Founding 100</a>
+        <a href="#proof">The Six</a>
+      </div>
+    </div>
+    <div class="base">
+      <span>© The Cold Hour — Gold Coast, AU</span>
+      <span>The hardest hour of your day. On purpose.</span>
+    </div>
+  </div>
+</footer>
+
+<div class="sticky-cta"><a href="#enquiry">Book Your First Hour — $39</a></div>
+
+<script>
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Scroll reveals
+  if('IntersectionObserver' in window && !reduce){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+    },{threshold:0.12, rootMargin:'0px 0px -8% 0px'});
+    document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+
+  // Magnetic buttons
+  if(!reduce && window.matchMedia('(pointer:fine)').matches){
+    document.querySelectorAll('.magnetic').forEach(function(btn){
+      btn.addEventListener('mousemove', function(ev){
+        var r = btn.getBoundingClientRect();
+        var x = ev.clientX - r.left - r.width/2;
+        var y = ev.clientY - r.top - r.height/2;
+        btn.style.transform = 'translate(' + (x*0.18) + 'px,' + (y*0.3) + 'px)';
+      });
+      btn.addEventListener('mouseleave', function(){ btn.style.transform = ''; });
+    });
+  }
+
+  // Hero parallax steam
+  if(!reduce){
+    var steam = document.querySelector('.hero-steam');
+    var hero = document.querySelector('.hero');
+    window.addEventListener('scroll', function(){
+      var y = window.pageYOffset;
+      if(y < window.innerHeight && steam){ steam.style.transform = 'translateY(' + (y*0.25) + 'px) scale(1.05)'; }
+    }, {passive:true});
+  }
+})();
+</script>
+</body>
+</html>
