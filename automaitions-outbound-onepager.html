@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Operator Dashboard — Automaitions</title>
+<style>
+  @page { size: A4; margin: 0; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: #ffffff;
+    color: #1a1a1a;
+    line-height: 1.55;
+    max-width: 210mm;
+    margin: 0 auto;
+    padding: 36px 44px 32px;
+    font-size: 13.5px;
+  }
+
+  /* ── Header ── */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #0a0a0a;
+  }
+  .brand {
+    font-size: 10.5px;
+    color: #555;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  .tagline {
+    font-size: 10.5px;
+    color: #555;
+    text-align: right;
+    font-style: italic;
+  }
+
+  /* ── Anchor ── */
+  .anchor {
+    background: #0a0a0a;
+    color: #fff;
+    padding: 16px 22px;
+    border-radius: 4px;
+    margin-bottom: 22px;
+    font-size: 14.5px;
+    line-height: 1.5;
+  }
+  .anchor strong { color: #fff; }
+
+  /* ── Problem ── */
+  .problem {
+    margin-bottom: 20px;
+    font-size: 13.5px;
+  }
+  .problem-headline {
+    font-size: 15px;
+    font-weight: 700;
+    color: #c0392b;
+    margin-bottom: 6px;
+  }
+
+  /* ── Proof ── */
+  h2 {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #0a0a0a;
+    margin-bottom: 8px;
+    margin-top: 0;
+  }
+  .proof-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 6px;
+    font-size: 12px;
+  }
+  .proof-table th {
+    text-align: left;
+    background: #f5f5f5;
+    padding: 7px 10px;
+    font-weight: 700;
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    border-bottom: 2px solid #ddd;
+  }
+  .proof-table td {
+    padding: 6px 10px;
+    border-bottom: 1px solid #eee;
+  }
+  .proof-table .before { color: #999; }
+  .proof-table .after { color: #0a0a0a; font-weight: 600; }
+  .proof-kicker {
+    font-size: 13px;
+    font-weight: 700;
+    text-align: center;
+    margin: 10px 0 20px;
+    padding: 10px;
+    background: #f9f9f9;
+    border-radius: 4px;
+  }
+
+  /* ── Offer ── */
+  .offer-section { margin-bottom: 18px; }
+  .offer-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  .offer-item {
+    background: #f9f9f9;
+    padding: 8px 12px;
+    border-radius: 3px;
+    font-size: 12.5px;
+  }
+  .offer-item strong { display: block; font-size: 12px; margin-bottom: 1px; }
+
+  /* ── Price ── */
+  .price-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    padding: 14px 20px;
+    margin-bottom: 14px;
+    border: 2px solid #0a0a0a;
+    border-radius: 4px;
+  }
+  .price-amount {
+    font-size: 30px;
+    font-weight: 800;
+    line-height: 1;
+  }
+  .price-details {
+    font-size: 12.5px;
+    color: #333;
+    line-height: 1.5;
+  }
+  .price-details strong { display: block; }
+
+  /* ── Guarantee ── */
+  .guarantee {
+    text-align: center;
+    font-size: 12.5px;
+    padding: 10px 16px;
+    background: #f0f7f0;
+    border: 1px solid #4caf50;
+    border-radius: 4px;
+    margin-bottom: 18px;
+  }
+  .guarantee strong { color: #2e7d32; }
+
+  /* ── Who / Why ── */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 18px;
+  }
+  .col h2 { margin-bottom: 6px; }
+  .col ul {
+    list-style: none;
+    font-size: 12.5px;
+  }
+  .col ul li {
+    padding: 2px 0 2px 14px;
+    position: relative;
+  }
+  .col ul li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 9px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+  }
+  .col-green li::before { background: #4caf50; }
+  .col-dark li::before { background: #0a0a0a; }
+
+  /* ── CTA ── */
+  .cta {
+    text-align: center;
+    padding: 16px 20px;
+    border: 2px solid #0a0a0a;
+    border-radius: 6px;
+  }
+  .cta-headline {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .cta-sub {
+    font-size: 12.5px;
+    color: #444;
+    margin-bottom: 8px;
+  }
+  .cta-action {
+    font-size: 13px;
+    font-weight: 700;
+    color: #0a0a0a;
+  }
+
+  /* ── Footer ── */
+  .footer {
+    margin-top: 16px;
+    padding-top: 10px;
+    border-top: 1px solid #eee;
+    font-size: 10px;
+    color: #999;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  @media print {
+    body { padding: 28px 36px 24px; }
+    .cta { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="brand">Automaitions &middot; Gold Coast, AU</div>
+  <div class="tagline">We build what we run. We run what we sell.</div>
+</div>
+
+<!-- ANCHOR — the one line that earns the rest of the page -->
+<div class="anchor">
+  We built this for our own barbershop first. 15,000 clients, 14 operators, $465K in revenue &mdash; all tracked automatically, zero admin hours. Now we build it for businesses like yours. <strong>14 days, fixed price.</strong>
+</div>
+
+<!-- PROBLEM -->
+<div class="problem">
+  <div class="problem-headline">You opened a second location and lost visibility overnight.</div>
+  Revenue lives in one tool, payroll in another, staff performance in your head. Every Monday you're the human API &mdash; calling managers, pulling reports, reconciling spreadsheets &mdash; just to know where you stand. Bad weeks hide until month-end. Decisions run on gut feel. Growth stalls because the one person who &ldquo;knows the numbers&rdquo; is you.
+</div>
+
+<!-- PROOF — Blacksmith hero -->
+<h2>Our Proof &mdash; Blacksmith Barbers (Our Own Shop)</h2>
+<table class="proof-table">
+  <thead>
+    <tr><th>Metric</th><th>Before</th><th>After (13 months)</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Weekly admin</td><td class="before">2+ hrs manual every Thursday</td><td class="after">0 hours &mdash; fully automated</td></tr>
+    <tr><td>Client database</td><td class="before">Scattered, no segmentation</td><td class="after">15,191 clients, tiered, auto-refreshed daily</td></tr>
+    <tr><td>Revenue visibility</td><td class="before">End-of-month surprise</td><td class="after">Real-time per-location, per-operator</td></tr>
+    <tr><td>Staff accountability</td><td class="before">&ldquo;How was your week?&rdquo;</td><td class="after">Per-barber daily revenue, auto-comparison</td></tr>
+    <tr><td>Decision speed</td><td class="before">Weeks (waiting for numbers)</td><td class="after">Same day (numbers arrive automatically)</td></tr>
+  </tbody>
+</table>
+<div class="proof-kicker">$464,813 revenue tracked &middot; $184,782 take-home &middot; Zero weekly admin hours</div>
+
+<!-- OFFER -->
+<div class="offer-section">
+  <h2>What You Get</h2>
+  <div class="offer-grid">
+    <div class="offer-item"><strong>Discovery deep-dive</strong>60 min mapping your tools, locations &amp; the 5&ndash;8 numbers that matter.</div>
+    <div class="offer-item"><strong>Custom data pipeline</strong>Automated connections to your existing stack. No manual exports.</div>
+    <div class="offer-item"><strong>Multi-location dashboard</strong>Up to 5 locations. Per-operator performance. Anomaly alerts. One screen.</div>
+    <div class="offer-item"><strong>Alert system</strong>Push notifications when something needs attention. Bad weeks don't hide.</div>
+    <div class="offer-item"><strong>Owner walkthrough</strong>1-on-1 showing you exactly how to read and use your dashboard.</div>
+    <div class="offer-item"><strong>60 days support</strong>Swap a tool or add a location &mdash; we re-wire it.</div>
+  </div>
+</div>
+
+<!-- PRICING -->
+<div class="price-row">
+  <div class="price-amount">$7,500</div>
+  <div class="price-details">
+    <strong>Fixed price. Fixed scope. Done-for-you.</strong>
+    Discovery to live dashboard in 14 days.<br>
+    Pays for itself in 7 months at 5 hrs/week admin saved &mdash; then it's free, forever.
+  </div>
+</div>
+
+<!-- GUARANTEE -->
+<div class="guarantee">
+  <strong>The guarantee:</strong> If your dashboard isn't live and pulling real data within 14 days of kickoff, you don't pay. No retainer. No lock-in.
+</div>
+
+<!-- WHO THIS IS FOR + WHY US -->
+<div class="two-col">
+  <div class="col">
+    <h2>This Is for You If</h2>
+    <ul class="col-green">
+      <li>Multi-location barber, salon, clinic or service business</li>
+      <li>$200K&ndash;$2M+ annual revenue across sites</li>
+      <li>Running 3+ disconnected tools</li>
+      <li>You still pull the weekly numbers manually</li>
+      <li>Chair-rental, commission or hybrid models</li>
+    </ul>
+  </div>
+  <div class="col">
+    <h2>Why Us</h2>
+    <ul class="col-dark">
+      <li><strong>We use it</strong> &mdash; every system we sell runs inside our own businesses first</li>
+      <li><strong>Real numbers</strong> &mdash; we show you our dashboards with live data before you spend a dollar</li>
+      <li><strong>Operator to operator</strong> &mdash; we run multi-location businesses, not slide decks</li>
+    </ul>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta">
+  <div class="cta-headline">See the live dashboard. Get a straight answer.</div>
+  <div class="cta-sub">15-minute call. We screen-share our own barbershop system, ask a few questions about your setup, and tell you whether this fits. No deck. No proposal.</div>
+  <div class="cta-action">Reply to this message or book directly &rarr; [link]</div>
+</div>
+
+<div class="footer">
+  <span>Automaitions &mdash; autom-AI-tions &middot; Gold Coast, Australia</span>
+  <span>2026</span>
+</div>
+
+</body>
+</html>
