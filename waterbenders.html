@@ -1,664 +1,587 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-AU">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Waterbenders — The exterior team you call when the surface is too expensive to risk</title>
-<meta name="description" content="Soft-wash matched to the surface, not pressure-blasted. Waterbenders restore the exterior of the Gold Coast's most valuable homes without shattering seals, voiding roof warranties or stripping render. Book a free site walk." />
+<title>Waterbenders — Soft Washed, Never Blasted | Gold Coast</title>
+<meta name="description" content="Low-pressure soft wash that won't crack a tile or void your warranty. The operator you call when the surface is too expensive to risk. Book a Site Walk." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Lato:wght@400;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
 <style>
   :root{
     --navy:#26356C;
     --navy-dark:#1A254A;
     --blue:#0689F2;
-    --blue-deep:#0863B4;
-    --off:#FBFAF8;
+    --accent:#0863B4;
     --white:#FFFFFF;
-    --ink:#333333;
-    --ink-soft:#555555;
-    --line:rgba(38,53,108,.14);
-    --line-dark:rgba(255,255,255,.14);
-    --display:'Montserrat',-apple-system,system-ui,sans-serif;
-    --body:'Lato',-apple-system,system-ui,sans-serif;
-    --pad:clamp(72px,10vw,140px);
-    --gutter:clamp(22px,5vw,72px);
-    --maxw:1200px;
-    --shadow:0 24px 60px -28px rgba(26,37,74,.45);
+    --ink:#1A254A;
+    --paper:#F6F8FB;
+    --line:rgba(38,53,108,.12);
+    --display:'Montserrat',-apple-system,BlinkMacSystemFont,sans-serif;
+    --body:'Lato',-apple-system,BlinkMacSystemFont,sans-serif;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
   body{
-    background:var(--off);
-    color:var(--ink);
     font-family:var(--body);
-    font-weight:400;
-    line-height:1.65;
-    font-size:clamp(16px,1.1vw,18px);
+    color:var(--ink);
+    background:var(--white);
+    line-height:1.6;
     -webkit-font-smoothing:antialiased;
-    text-rendering:optimizeLegibility;
     overflow-x:hidden;
   }
-  h1,h2,h3,h4{font-family:var(--display);color:var(--navy);line-height:1.08;font-weight:800;letter-spacing:-.01em}
-  a{color:var(--blue);text-decoration:none}
+  h1,h2,h3,h4,.display{font-family:var(--display);line-height:1.1;letter-spacing:-.01em}
   img{display:block;max-width:100%}
-  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--gutter)}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 28px}
   .eyebrow{
-    font-family:var(--display);font-weight:700;font-size:.74rem;
-    letter-spacing:.22em;text-transform:uppercase;color:var(--blue);
-    display:inline-flex;align-items:center;gap:.6em;
+    font-family:var(--display);
+    font-weight:700;
+    font-size:.72rem;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:var(--blue);
   }
-  .eyebrow::before{content:"";width:30px;height:2px;background:var(--blue);display:inline-block}
-  .eyebrow.light{color:#7FC4FF}
-  .eyebrow.light::before{background:#7FC4FF}
+  .eyebrow.light{color:#9fc6f4}
 
-  /* ---------- BUTTONS ---------- */
-  .btn{
-    display:inline-flex;align-items:center;gap:.7em;
-    font-family:var(--display);font-weight:800;font-size:.96rem;letter-spacing:.01em;
-    padding:1.05em 2.1em;border-radius:6px;cursor:pointer;border:0;
+  /* ---------- CTA ---------- */
+  .cta{
+    display:inline-flex;align-items:center;gap:.55em;
+    font-family:var(--display);font-weight:700;font-size:1rem;
     background:var(--blue);color:#fff;
-    box-shadow:0 14px 30px -12px rgba(6,137,242,.7);
-    transition:transform .25s ease,box-shadow .25s ease,background .25s ease;
+    padding:1.05em 2.1em;border-radius:4px;border:none;cursor:pointer;
+    letter-spacing:.01em;
+    box-shadow:0 10px 30px -10px rgba(6,137,242,.7);
+    transition:transform .25s cubic-bezier(.2,.8,.2,1),box-shadow .25s,background .25s;
   }
-  .btn:hover{background:var(--blue-deep);transform:translateY(-3px);box-shadow:0 20px 40px -12px rgba(6,137,242,.8)}
-  .btn .arr{transition:transform .25s ease}
-  .btn:hover .arr{transform:translateX(5px)}
-  .btn-ghost{
-    background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.55);box-shadow:none;
-  }
-  .btn-ghost:hover{background:rgba(255,255,255,.1);border-color:#fff;transform:translateY(-3px)}
+  .cta:hover{transform:translateY(-3px);background:var(--accent);box-shadow:0 18px 40px -12px rgba(6,137,242,.85)}
+  .cta:active{transform:translateY(-1px)}
+  .cta .arrow{transition:transform .25s}
+  .cta:hover .arrow{transform:translateX(4px)}
+  .cta.ghost{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.45);box-shadow:none}
+  .cta.ghost:hover{background:rgba(255,255,255,.1);border-color:#fff}
 
   /* ---------- NAV ---------- */
   header.nav{
     position:fixed;top:0;left:0;right:0;z-index:60;
     display:flex;align-items:center;justify-content:space-between;
-    padding:18px var(--gutter);
-    transition:background .35s ease,padding .35s ease,box-shadow .35s ease;
+    padding:18px 28px;
+    transition:background .35s,padding .35s,box-shadow .35s;
   }
-  header.nav.scrolled{background:rgba(26,37,74,.96);backdrop-filter:blur(10px);padding:12px var(--gutter);box-shadow:0 10px 30px -18px rgba(0,0,0,.6)}
-  header.nav .logo img{height:38px;width:auto}
+  header.nav.scrolled{
+    background:rgba(26,37,74,.92);
+    backdrop-filter:saturate(140%) blur(10px);
+    padding:12px 28px;
+    box-shadow:0 1px 0 rgba(255,255,255,.06);
+  }
+  header.nav .logo img{height:42px;width:auto;transition:height .35s}
+  header.nav.scrolled .logo img{height:34px}
   header.nav .nav-cta{
-    font-family:var(--display);font-weight:800;font-size:.86rem;letter-spacing:.02em;
-    padding:.75em 1.5em;border-radius:6px;background:var(--blue);color:#fff;
-    transition:transform .25s ease,background .25s ease;
+    font-family:var(--display);font-weight:700;font-size:.85rem;
+    background:var(--blue);color:#fff;padding:.7em 1.4em;border-radius:4px;
+    transition:background .25s,transform .25s;
   }
-  header.nav .nav-cta:hover{background:var(--blue-deep);transform:translateY(-2px)}
+  header.nav .nav-cta:hover{background:var(--accent);transform:translateY(-2px)}
 
   /* ---------- HERO ---------- */
   .hero{
-    position:relative;min-height:100svh;display:flex;align-items:flex-end;
-    padding:0 0 clamp(60px,9vw,110px);color:#fff;overflow:hidden;
+    position:relative;min-height:100vh;display:flex;align-items:center;
+    color:#fff;overflow:hidden;
   }
-  .hero-bg{position:absolute;inset:0;z-index:0}
-  .hero-bg img{width:100%;height:100%;object-fit:cover;transform:scale(1.06);animation:slowzoom 18s ease-out forwards}
+  .hero .bg{
+    position:absolute;inset:0;
+    background:url('./wb-assets/images/hero-prestige-property.jpg') center/cover no-repeat;
+    transform:scale(1.06);
+    animation:slowzoom 18s ease-out forwards;
+  }
   @keyframes slowzoom{to{transform:scale(1)}}
-  .hero-bg::after{
-    content:"";position:absolute;inset:0;
-    background:linear-gradient(180deg,rgba(26,37,74,.62) 0%,rgba(26,37,74,.28) 38%,rgba(26,37,74,.78) 100%),
-               linear-gradient(90deg,rgba(26,37,74,.5),transparent 60%);
+  .hero .scrim{
+    position:absolute;inset:0;
+    background:linear-gradient(105deg,rgba(26,37,74,.92) 0%,rgba(26,37,74,.7) 42%,rgba(38,53,108,.25) 100%);
   }
-  .hero .wrap{position:relative;z-index:2;width:100%}
+  .hero .wrap{position:relative;z-index:2;padding-top:120px;padding-bottom:80px}
   .hero h1{
-    color:#fff;font-weight:900;
-    font-size:clamp(2.5rem,6.2vw,5rem);max-width:16ch;
-    text-shadow:0 2px 30px rgba(0,0,0,.3);
+    font-size:clamp(2.4rem,5.6vw,4.6rem);font-weight:800;
+    max-width:16ch;margin:.5rem 0 1.1rem;
   }
-  .hero h1 em{font-style:normal;color:#7FC4FF}
+  .hero h1 .em{color:#7fbef6}
   .hero .sub{
-    margin-top:1.25rem;max-width:54ch;font-size:clamp(1.05rem,1.6vw,1.3rem);
-    color:rgba(255,255,255,.9);font-weight:400;
+    font-size:clamp(1.05rem,1.8vw,1.35rem);font-weight:300;
+    max-width:40ch;color:rgba(255,255,255,.9);margin-bottom:2.2rem;
   }
-  .hero .cta-row{margin-top:2.2rem;display:flex;gap:18px;flex-wrap:wrap;align-items:center}
-  .hero .micro{margin-top:1.3rem;font-size:.86rem;letter-spacing:.04em;color:rgba(255,255,255,.72);display:flex;gap:1.4em;flex-wrap:wrap}
-  .hero .micro span{display:inline-flex;align-items:center;gap:.5em}
-  .hero .micro span::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--blue)}
-  .scroll-cue{
-    position:absolute;bottom:26px;left:50%;transform:translateX(-50%);z-index:3;
-    font-family:var(--display);font-size:.66rem;letter-spacing:.28em;text-transform:uppercase;
-    color:rgba(255,255,255,.6);display:flex;flex-direction:column;align-items:center;gap:8px;
+  .hero .micro{
+    margin-top:1.6rem;font-size:.85rem;color:rgba(255,255,255,.62);
+    display:flex;gap:1.6rem;flex-wrap:wrap;font-weight:300;
   }
-  .scroll-cue .bar{width:1px;height:36px;background:linear-gradient(rgba(255,255,255,.7),transparent);animation:cue 2s ease-in-out infinite}
-  @keyframes cue{0%,100%{opacity:.3;transform:scaleY(.6)}50%{opacity:1;transform:scaleY(1)}}
+  .hero .micro b{font-weight:700;color:rgba(255,255,255,.85)}
 
   /* ---------- SECTION SHELL ---------- */
-  section{padding:var(--pad) 0;position:relative}
-  .lead{font-size:clamp(1.05rem,1.5vw,1.28rem);color:var(--ink-soft);max-width:60ch}
-  h2.section-title{font-size:clamp(1.9rem,3.8vw,3.1rem);max-width:18ch;margin-top:.7rem}
-
-  /* reveal */
-  .reveal{opacity:0;transform:translateY(34px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
-  .reveal.in{opacity:1;transform:none}
-  .reveal.d1{transition-delay:.08s}.reveal.d2{transition-delay:.16s}.reveal.d3{transition-delay:.24s}.reveal.d4{transition-delay:.32s}
-
-  /* ---------- PROOF / BEFORE-AFTER ---------- */
-  .proof{background:var(--navy-dark);color:#fff}
-  .proof h2,.proof h3{color:#fff}
-  .proof .head{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;flex-wrap:wrap;margin-bottom:48px}
-  .proof .head .lead{color:rgba(255,255,255,.78)}
-  .ba{
-    position:relative;width:100%;aspect-ratio:16/9;border-radius:12px;overflow:hidden;
-    user-select:none;cursor:ew-resize;box-shadow:var(--shadow);border:1px solid var(--line-dark);
-  }
-  .ba img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none}
-  .ba .after-layer{clip-path:inset(0 0 0 50%);}
-  .ba .tag{
-    position:absolute;top:16px;font-family:var(--display);font-weight:800;font-size:.72rem;
-    letter-spacing:.14em;text-transform:uppercase;padding:.5em .9em;border-radius:4px;
-    background:rgba(26,37,74,.85);color:#fff;backdrop-filter:blur(4px);z-index:4;
-  }
-  .ba .tag.before{left:16px}.ba .tag.after{right:16px;background:var(--blue)}
-  .ba .handle{position:absolute;top:0;bottom:0;left:50%;width:3px;background:#fff;z-index:5;transform:translateX(-50%);box-shadow:0 0 16px rgba(0,0,0,.4)}
-  .ba .knob{
-    position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:6;
-    width:52px;height:52px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;
-    color:var(--navy);font-weight:900;box-shadow:0 6px 20px rgba(0,0,0,.35);
-  }
-  .ba .knob svg{width:24px;height:24px}
-  .proof .caption{margin-top:18px;font-size:.92rem;color:rgba(255,255,255,.62);display:flex;align-items:center;gap:.6em}
-  .proof .caption::before{content:"57";font-family:var(--display);font-weight:900;color:var(--blue);font-size:1.1rem}
+  section{padding:clamp(72px,9vw,128px) 0}
+  .section-head{max-width:62ch}
+  .section-head h2{font-size:clamp(1.9rem,3.8vw,3rem);font-weight:800;margin:.6rem 0 1rem}
+  .section-head p{font-size:1.12rem;color:rgba(26,37,74,.78)}
 
   /* ---------- FEAR ---------- */
-  .fear{background:var(--white)}
-  .fear .grid{display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(40px,6vw,90px);align-items:center}
-  .fear .num{font-family:var(--display);font-weight:900;font-size:1rem;color:var(--blue);letter-spacing:.1em}
-  .fear ul{list-style:none;margin-top:30px;display:flex;flex-direction:column;gap:22px}
-  .fear li{padding-left:40px;position:relative;color:var(--ink-soft)}
-  .fear li strong{color:var(--navy);font-family:var(--display);font-weight:700;display:block;margin-bottom:2px;font-size:1.05rem}
-  .fear li::before{
-    content:"";position:absolute;left:0;top:4px;width:22px;height:22px;border-radius:50%;
-    background:rgba(6,137,242,.12);
-    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230689F2' stroke-width='3' stroke-linecap='round'%3E%3Cpath d='M18 6 6 18M6 6l12 12'/%3E%3C/svg%3E");
-    background-size:13px;background-position:center;background-repeat:no-repeat;
+  .fear{background:var(--navy-dark);color:#fff}
+  .fear .eyebrow{color:#ff9a8a}
+  .fear h2{font-size:clamp(1.9rem,3.8vw,3rem);font-weight:800;max-width:20ch;margin:.6rem 0 2.6rem}
+  .fear h2 .em{color:#ff9a8a}
+  .fear-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .fear-card{
+    background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);
+    border-radius:8px;padding:30px 26px;
+    transition:transform .3s,border-color .3s,background .3s;
   }
-  .fear .pull{
-    border-left:3px solid var(--blue);padding:6px 0 6px 26px;margin-top:4px;
-    font-family:var(--display);font-weight:700;font-size:clamp(1.3rem,2.4vw,1.9rem);color:var(--navy);line-height:1.25;
+  .fear-card:hover{transform:translateY(-6px);border-color:rgba(255,154,138,.5);background:rgba(255,255,255,.06)}
+  .fear-card .n{font-family:var(--display);font-weight:800;font-size:.8rem;color:#ff9a8a;letter-spacing:.18em}
+  .fear-card h3{font-size:1.25rem;font-weight:700;margin:.9rem 0 .6rem}
+  .fear-card p{color:rgba(255,255,255,.72);font-size:.98rem;font-weight:300}
+  .fear-quote{
+    margin-top:2.8rem;font-family:var(--display);font-weight:500;
+    font-size:clamp(1.15rem,2.2vw,1.6rem);color:#fff;max-width:30ch;font-style:italic;
+    border-left:3px solid #ff9a8a;padding-left:1.2rem;
   }
 
   /* ---------- MECHANISM ---------- */
-  .mech{background:var(--off)}
-  .mech .twocol{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,4vw,56px);margin-top:54px}
-  .mcard{
-    border-radius:12px;padding:clamp(28px,3vw,40px);background:var(--white);
-    border:1px solid var(--line);box-shadow:0 16px 44px -34px rgba(26,37,74,.5);
+  .mech{background:var(--white)}
+  .mech-spine{
+    font-family:var(--display);font-weight:600;
+    font-size:clamp(1.4rem,2.9vw,2.2rem);line-height:1.32;
+    max-width:24ch;margin:1rem 0 0;color:var(--navy);
   }
-  .mcard.dark{background:var(--navy);color:#fff;border-color:transparent}
-  .mcard.dark h3{color:#fff}
-  .mcard .lbl{font-family:var(--display);font-weight:800;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase}
-  .mcard.theirs .lbl{color:#9aa3bd}
-  .mcard.ours .lbl{color:#7FC4FF}
-  .mcard h3{font-size:clamp(1.3rem,2vw,1.7rem);margin:.6rem 0 1rem}
-  .mcard p{color:var(--ink-soft);font-size:1.02rem}
-  .mcard.dark p{color:rgba(255,255,255,.82)}
-  .mcard .psi{font-family:var(--display);font-weight:900;font-size:clamp(2.2rem,4vw,3rem);line-height:1;margin-bottom:.4rem}
-  .mcard.theirs .psi{color:var(--navy)}
-  .mcard.ours .psi{color:#7FC4FF}
-  .mcard .psi small{font-size:.9rem;font-weight:700;letter-spacing:.04em;opacity:.7;display:block;margin-top:.4rem}
+  .mech-spine .hl{color:var(--blue)}
+  .mech-legs{display:grid;grid-template-columns:repeat(2,1fr);gap:14px 40px;margin-top:3rem}
+  .leg{display:flex;gap:16px;padding:18px 0;border-top:1px solid var(--line)}
+  .leg .tick{
+    flex:0 0 auto;width:30px;height:30px;border-radius:50%;
+    background:rgba(6,137,242,.12);color:var(--blue);
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.9rem;
+  }
+  .leg h4{font-size:1.05rem;font-weight:700;color:var(--navy)}
+  .leg p{font-size:.95rem;color:rgba(26,37,74,.72);font-weight:300;margin-top:.2rem}
+  .mech-line{
+    margin-top:3.4rem;text-align:center;
+    font-family:var(--display);font-weight:700;color:var(--navy);
+    font-size:clamp(1.05rem,2vw,1.4rem);max-width:34ch;margin-left:auto;margin-right:auto;
+  }
+
+  /* ---------- PROOF / SLIDER ---------- */
+  .proof{background:var(--paper)}
+  .proof .section-head{margin:0 auto;text-align:center}
+  .compare{
+    position:relative;max-width:980px;margin:3rem auto 0;
+    aspect-ratio:16/9;border-radius:12px;overflow:hidden;
+    box-shadow:0 40px 80px -30px rgba(26,37,74,.55);
+    user-select:none;cursor:ew-resize;background:var(--navy-dark);
+  }
+  .compare img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none}
+  .compare .after{clip-path:inset(0 0 0 0)}
+  .compare .before-wrap{position:absolute;inset:0;width:50%;overflow:hidden}
+  .compare .before-wrap img{width:200%;max-width:none}
+  .compare .tag{
+    position:absolute;bottom:18px;font-family:var(--display);font-weight:700;
+    font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;
+    padding:.5em .9em;border-radius:3px;background:rgba(26,37,74,.85);color:#fff;z-index:3;
+  }
+  .compare .tag.b{left:18px}
+  .compare .tag.a{right:18px;background:rgba(6,137,242,.92)}
+  .compare .handle{
+    position:absolute;top:0;bottom:0;left:50%;width:2px;background:#fff;z-index:4;
+    transform:translateX(-50%);
+  }
+  .compare .knob{
+    position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+    width:48px;height:48px;border-radius:50%;background:#fff;z-index:5;
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 8px 22px rgba(0,0,0,.35);color:var(--navy);font-weight:800;
+  }
+  .compare .knob svg{width:22px;height:22px}
+  .proof-cap{text-align:center;margin-top:1.4rem;color:rgba(26,37,74,.7);font-size:.95rem}
+  .proof-cap b{color:var(--navy);font-family:var(--display)}
 
   /* ---------- SERVICES ---------- */
-  .services{background:var(--navy-dark);color:#fff}
-  .services h2,.services h3{color:#fff}
-  .services .head .lead{color:rgba(255,255,255,.78)}
-  .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:52px}
+  .services{background:var(--white)}
+  .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:3rem}
   .svc{
-    position:relative;border-radius:12px;overflow:hidden;min-height:340px;display:flex;flex-direction:column;justify-content:flex-end;
-    border:1px solid var(--line-dark);
+    border-radius:10px;overflow:hidden;background:var(--white);
+    border:1px solid var(--line);
+    transition:transform .35s,box-shadow .35s;
   }
-  .svc img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.2,.7,.2,1)}
-  .svc::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(26,37,74,.1) 0%,rgba(26,37,74,.4) 50%,rgba(26,37,74,.94) 100%)}
-  .svc:hover img{transform:scale(1.07)}
-  .svc .body{position:relative;z-index:2;padding:clamp(22px,2.5vw,30px)}
-  .svc .protects{font-family:var(--display);font-weight:700;font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:#7FC4FF;display:block;margin-bottom:.5rem}
-  .svc h3{font-size:1.3rem;margin-bottom:.5rem}
-  .svc p{font-size:.96rem;color:rgba(255,255,255,.82)}
-  .svc.wide{grid-column:span 2}
+  .svc:hover{transform:translateY(-8px);box-shadow:0 30px 60px -28px rgba(26,37,74,.4)}
+  .svc .ph{position:relative;aspect-ratio:4/3;overflow:hidden}
+  .svc .ph img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.2,.8,.2,1)}
+  .svc:hover .ph img{transform:scale(1.07)}
+  .svc .ph .protect{
+    position:absolute;left:14px;bottom:14px;z-index:2;
+    font-family:var(--display);font-weight:700;font-size:.64rem;letter-spacing:.14em;
+    text-transform:uppercase;color:#fff;background:rgba(26,37,74,.82);padding:.45em .8em;border-radius:3px;
+  }
+  .svc .body{padding:22px 24px 28px}
+  .svc h3{font-size:1.25rem;font-weight:700;color:var(--navy)}
+  .svc p{font-size:.96rem;color:rgba(26,37,74,.74);font-weight:300;margin-top:.5rem}
 
-  /* ---------- EXCLUSIVITY / ESTATE CARE ---------- */
-  .estate{background:var(--white)}
-  .estate .grid{display:grid;grid-template-columns:1fr 1.05fr;gap:clamp(40px,6vw,80px);align-items:center}
-  .estate .imgwrap{border-radius:12px;overflow:hidden;box-shadow:var(--shadow);position:relative}
-  .estate .imgwrap img{width:100%;aspect-ratio:4/5;object-fit:cover}
-  .estate .imgwrap .cap{
-    position:absolute;left:0;right:0;bottom:0;padding:22px;color:#fff;z-index:2;
-    background:linear-gradient(transparent,rgba(26,37,74,.9));
-    font-family:var(--display);font-weight:700;font-size:.92rem;
+  /* ---------- OFFER ---------- */
+  .offer{background:var(--navy);color:#fff;position:relative;overflow:hidden}
+  .offer:before{
+    content:"";position:absolute;right:-120px;top:-120px;width:420px;height:420px;
+    background:radial-gradient(circle,rgba(6,137,242,.28),transparent 70%);
   }
-  .estate .imgwrap .cap span{display:block;font-weight:400;font-family:var(--body);font-size:.82rem;color:rgba(255,255,255,.78);margin-top:3px}
-  .estate .badge{
-    display:inline-flex;align-items:center;gap:.6em;font-family:var(--display);font-weight:700;
-    font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--blue-deep);
-    background:rgba(6,137,242,.1);padding:.6em 1em;border-radius:50px;margin-bottom:1.2rem;
+  .offer .wrap{position:relative;z-index:2}
+  .offer h2{font-size:clamp(1.9rem,3.8vw,3rem);font-weight:800;max-width:20ch;margin:.6rem 0 1rem}
+  .offer .intro{font-size:1.12rem;color:rgba(255,255,255,.82);max-width:54ch;font-weight:300}
+  .offer-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:3rem}
+  .ocard{
+    background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);
+    border-radius:10px;padding:34px 32px;transition:border-color .3s,transform .3s;
   }
-  .estate .feats{list-style:none;margin:28px 0 0;display:flex;flex-direction:column;gap:16px}
-  .estate .feats li{padding-left:34px;position:relative;color:var(--ink-soft)}
-  .estate .feats li::before{
-    content:"";position:absolute;left:0;top:3px;width:20px;height:20px;border-radius:50%;background:var(--blue);
-    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E");
-    background-size:12px;background-position:center;background-repeat:no-repeat;
+  .ocard:hover{border-color:rgba(127,190,246,.6);transform:translateY(-5px)}
+  .ocard .step{font-family:var(--display);font-weight:800;font-size:.72rem;letter-spacing:.2em;color:#7fbef6}
+  .ocard h3{font-size:1.5rem;font-weight:700;margin:.7rem 0 .9rem}
+  .ocard ul{list-style:none}
+  .ocard li{display:flex;gap:.7em;padding:.42em 0;font-size:.98rem;color:rgba(255,255,255,.85);font-weight:300}
+  .ocard li:before{content:"";flex:0 0 auto;margin-top:.55em;width:7px;height:7px;border-radius:50%;background:var(--blue)}
+  .excl{
+    margin-top:2.6rem;padding:24px 28px;border-radius:10px;
+    background:rgba(6,137,242,.12);border:1px solid rgba(127,190,246,.35);
+    font-family:var(--display);font-weight:600;font-size:1.05rem;max-width:60ch;
   }
+  .excl span{color:#7fbef6}
+
+  /* ---------- FOUNDERS ---------- */
+  .founders{background:var(--paper)}
+  .founders-inner{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+  .founders img{border-radius:12px;box-shadow:0 30px 60px -30px rgba(26,37,74,.5)}
+  .founders h2{font-size:clamp(1.7rem,3.4vw,2.6rem);font-weight:800;color:var(--navy);margin:.6rem 0 1rem;max-width:18ch}
+  .founders p{font-size:1.08rem;color:rgba(26,37,74,.8);font-weight:300;margin-bottom:1rem}
 
   /* ---------- BOOK ---------- */
-  .book{background:var(--navy);color:#fff;position:relative;overflow:hidden}
-  .book::before{
-    content:"";position:absolute;top:-30%;right:-10%;width:600px;height:600px;border-radius:50%;
-    background:radial-gradient(circle,rgba(6,137,242,.28),transparent 65%);
+  .book{background:var(--navy-dark);color:#fff}
+  .book-inner{display:grid;grid-template-columns:1.05fr 1fr;gap:56px;align-items:start}
+  .book h2{font-size:clamp(2rem,4vw,3.1rem);font-weight:800;max-width:14ch;margin:.6rem 0 1.2rem}
+  .book .said{font-size:1.1rem;color:rgba(255,255,255,.8);font-weight:300;max-width:42ch}
+  .book .risk{
+    margin-top:1.8rem;padding:18px 22px;border-radius:8px;
+    background:rgba(6,137,242,.12);border:1px solid rgba(127,190,246,.35);
+    font-family:var(--display);font-weight:600;font-size:1rem;max-width:40ch;
   }
-  .book .grid{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,80px);align-items:start}
-  .book h2{color:#fff;font-size:clamp(2rem,4vw,3.2rem)}
-  .book .lead{color:rgba(255,255,255,.84);margin-top:1rem}
-  .book .reversal{margin-top:30px;display:flex;flex-direction:column;gap:14px}
-  .book .reversal li{list-style:none;padding-left:34px;position:relative;color:rgba(255,255,255,.9)}
-  .book .reversal li::before{
-    content:"";position:absolute;left:0;top:3px;width:20px;height:20px;border-radius:50%;background:var(--blue);
-    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E");
-    background-size:12px;background-position:center;background-repeat:no-repeat;
-  }
-  .form{
-    background:var(--white);border-radius:14px;padding:clamp(28px,3vw,40px);box-shadow:var(--shadow);
-  }
-  .form h3{color:var(--navy);font-size:1.4rem;margin-bottom:.4rem}
-  .form .sub{color:var(--ink-soft);font-size:.96rem;margin-bottom:1.6rem}
+  form{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:34px 32px}
   .field{margin-bottom:18px}
-  .field label{display:block;font-family:var(--display);font-weight:700;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--navy);margin-bottom:7px}
-  .field input,.field textarea{
-    width:100%;padding:.95em 1.1em;border:1.5px solid var(--line);border-radius:7px;
-    font-family:var(--body);font-size:1rem;color:var(--ink);background:var(--off);transition:border-color .2s ease,box-shadow .2s ease;
+  .field label{display:block;font-family:var(--display);font-weight:700;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.72);margin-bottom:.5em}
+  .field input{
+    width:100%;padding:.95em 1em;border-radius:6px;border:1px solid rgba(255,255,255,.18);
+    background:rgba(255,255,255,.06);color:#fff;font-family:var(--body);font-size:1rem;
+    transition:border-color .25s,background .25s;
   }
-  .field input:focus,.field textarea:focus{outline:0;border-color:var(--blue);box-shadow:0 0 0 4px rgba(6,137,242,.14);background:#fff}
-  .form .btn{width:100%;justify-content:center;margin-top:6px}
-  .form .reply{margin-top:14px;text-align:center;font-size:.86rem;color:var(--ink-soft)}
-  .form .reply strong{color:var(--blue-deep)}
-
-  /* ---------- STICKY CTA ---------- */
-  .sticky{
-    position:fixed;left:0;right:0;bottom:0;z-index:55;transform:translateY(120%);
-    transition:transform .4s cubic-bezier(.2,.7,.2,1);
-    background:rgba(26,37,74,.97);backdrop-filter:blur(10px);
-    border-top:1px solid var(--line-dark);
-    display:flex;align-items:center;justify-content:space-between;gap:18px;
-    padding:14px var(--gutter);
-  }
-  .sticky.show{transform:translateY(0)}
-  .sticky .msg{color:#fff;font-family:var(--display);font-weight:700;font-size:.96rem;line-height:1.3}
-  .sticky .msg span{display:block;font-family:var(--body);font-weight:400;font-size:.8rem;color:rgba(255,255,255,.7)}
-  .sticky .btn{padding:.85em 1.6em;font-size:.9rem;white-space:nowrap}
+  .field input::placeholder{color:rgba(255,255,255,.4)}
+  .field input:focus{outline:none;border-color:var(--blue);background:rgba(255,255,255,.1)}
+  form .cta{width:100%;justify-content:center;margin-top:.4rem}
+  form .reply{text-align:center;margin-top:1rem;font-size:.85rem;color:rgba(255,255,255,.6);font-weight:300}
 
   /* ---------- FOOTER ---------- */
-  footer{background:var(--navy-dark);color:rgba(255,255,255,.7);padding:64px 0 80px;border-top:1px solid var(--line-dark)}
-  footer .grid{display:flex;justify-content:space-between;align-items:flex-start;gap:40px;flex-wrap:wrap}
-  footer img{height:34px;margin-bottom:18px}
-  footer .col h4{color:#fff;font-size:.86rem;letter-spacing:.12em;text-transform:uppercase;margin-bottom:14px;font-weight:800}
-  footer .col p,footer .col a{font-size:.92rem;color:rgba(255,255,255,.7);display:block;margin-bottom:6px}
-  footer .col a:hover{color:#7FC4FF}
-  footer .legal{margin-top:44px;padding-top:24px;border-top:1px solid var(--line-dark);font-size:.8rem;color:rgba(255,255,255,.45)}
+  footer{background:#10182f;color:rgba(255,255,255,.55);padding:42px 0;font-size:.88rem}
+  footer .wrap{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
+  footer img{height:30px}
+
+  /* ---------- STICKY CTA ---------- */
+  .sticky-cta{
+    position:fixed;left:0;right:0;bottom:0;z-index:55;
+    background:rgba(26,37,74,.96);backdrop-filter:blur(8px);
+    border-top:1px solid rgba(255,255,255,.1);
+    padding:12px 28px;display:flex;align-items:center;justify-content:space-between;gap:16px;
+    transform:translateY(110%);transition:transform .4s cubic-bezier(.2,.8,.2,1);
+  }
+  .sticky-cta.show{transform:translateY(0)}
+  .sticky-cta .msg{color:#fff;font-family:var(--display);font-weight:600;font-size:.95rem}
+  .sticky-cta .msg span{color:#7fbef6}
+  .sticky-cta .cta{padding:.8em 1.6em;font-size:.9rem}
+
+  /* ---------- REVEAL ---------- */
+  .reveal{opacity:0;transform:translateY(34px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.8,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+  .reveal.d1{transition-delay:.08s}.reveal.d2{transition-delay:.16s}.reveal.d3{transition-delay:.24s}.reveal.d4{transition-delay:.32s}
 
   /* ---------- RESPONSIVE ---------- */
-  @media(max-width:900px){
-    .fear .grid,.mech .twocol,.estate .grid,.book .grid{grid-template-columns:1fr}
-    .svc-grid{grid-template-columns:1fr 1fr}
-    .svc.wide{grid-column:span 2}
-    .estate .imgwrap{order:-1}
+  @media(max-width:880px){
+    .fear-grid,.svc-grid{grid-template-columns:1fr 1fr}
+    .mech-legs,.offer-grid{grid-template-columns:1fr}
+    .founders-inner,.book-inner{grid-template-columns:1fr;gap:34px}
+    .founders img{order:-1}
+    .sticky-cta .msg{display:none}
+    .sticky-cta{justify-content:center}
   }
-  @media(max-width:600px){
-    .svc-grid{grid-template-columns:1fr}
-    .svc.wide{grid-column:span 1}
-    .sticky{flex-direction:column;align-items:stretch;text-align:center;gap:10px}
-    .sticky .btn{justify-content:center}
-    header.nav .nav-cta{padding:.65em 1.1em;font-size:.78rem}
-    .hero .cta-row .btn-ghost{display:none}
+  @media(max-width:560px){
+    .wrap{padding:0 20px}
+    .fear-grid,.svc-grid{grid-template-columns:1fr}
+    header.nav .logo img{height:34px}
+    .hero .micro{gap:.6rem 1.2rem}
   }
-  @media (prefers-reduced-motion:reduce){
-    *{animation:none!important;scroll-behavior:auto!important}
-    .reveal{opacity:1!important;transform:none!important;transition:none!important}
-    .hero-bg img{transform:none!important}
+  @media(prefers-reduced-motion:reduce){
+    *,*:before,*:after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
+    .hero .bg{transform:none}
+    .reveal{opacity:1;transform:none}
   }
 </style>
 </head>
 <body>
 
-<!-- NAV: logo + single CTA only -->
+<!-- NAV: logo + ONE CTA only -->
 <header class="nav" id="nav">
-  <a class="logo" href="#top" aria-label="Waterbenders home">
-    <img src="./wb-assets/logos/logo-white.png" alt="Waterbenders" />
-  </a>
+  <a class="logo" href="#top"><img src="./wb-assets/logos/logo-white.png" alt="Waterbenders" /></a>
   <a class="nav-cta" href="#book">Book a Site Walk</a>
 </header>
 
-<!-- HERO -->
+<!-- HERO: hook in their words + subline + ONE CTA -->
 <section class="hero" id="top">
-  <div class="hero-bg">
-    <img src="./wb-assets/images/hero-prestige-property.jpg" alt="Restored waterfront residence on the Gold Coast" />
-  </div>
+  <div class="bg" role="img" aria-label="Restored prestige Gold Coast waterfront home"></div>
+  <div class="scrim"></div>
   <div class="wrap">
-    <span class="eyebrow light">Gold Coast Exterior Specialists</span>
-    <h1>The team you call when the surface is <em>too expensive to risk.</em></h1>
-    <p class="sub">Most operators arrive with a 4,500 PSI rig and treat your render, roof and glass like a driveway. We soft-wash every surface to its own tolerance — so the grime leaves and the home stays intact.</p>
-    <div class="cta-row">
-      <a class="btn" href="#book">Book a Free Site Walk <span class="arr">&rarr;</span></a>
-      <a class="btn btn-ghost" href="#proof">See the 57 RAC result</a>
-    </div>
+    <span class="eyebrow light">Gold Coast · Exterior Restoration</span>
+    <h1>Soft washed, <span class="em">never blasted.</span> Tiles intact, warranty intact, clean for months — not weeks.</h1>
+    <p class="sub">The operator you call when the surface is too expensive to risk. On the day we book, finished in one visit — or we come back free.</p>
+    <a class="cta" href="#book">Book a Site Walk <span class="arrow">&rarr;</span></a>
     <div class="micro">
-      <span>Fully insured</span>
-      <span>Fixed on-the-spot quote</span>
-      <span>A limited number of homes each season</span>
-    </div>
-  </div>
-  <div class="scroll-cue"><span>Scroll</span><span class="bar"></span></div>
-</section>
-
-<!-- PROOF (high up, strongest converter) -->
-<section class="proof" id="proof">
-  <div class="wrap">
-    <div class="head">
-      <div>
-        <span class="eyebrow light reveal">Case study &mdash; 57 Royal Albert Drive</span>
-        <h2 class="section-title reveal d1">Drag the slider. Same house, same week.</h2>
-      </div>
-      <p class="lead reveal d2">No edits, no second visit. This is what surface-matched soft-washing does to render, glass and stone that everyone else had written off.</p>
-    </div>
-
-    <div class="ba reveal d1" id="ba" role="slider" aria-label="Before and after comparison slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" tabindex="0">
-      <img src="./wb-assets/images/services/pressure-washing.jpg" alt="57 Royal Albert Drive before treatment" />
-      <img class="after-layer" id="afterLayer" src="./wb-assets/images/hero-prestige-property.jpg" alt="57 Royal Albert Drive after treatment" />
-      <span class="tag before">Before</span>
-      <span class="tag after">After</span>
-      <div class="handle" id="baHandle"></div>
-      <div class="knob" id="baKnob" style="left:50%">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/><path d="m9 6 6 6-6 6" transform="translate(6 0)"/></svg>
-      </div>
-    </div>
-    <p class="caption reveal d2">Royal Albert Drive &mdash; restored surface-by-surface in a single visit, warranties intact.</p>
-
-    <div style="margin-top:42px" class="reveal d3">
-      <a class="btn" href="#book">Get the same result on your home <span class="arr">&rarr;</span></a>
+      <span><b>57 Royal Albert Drive</b> — the standard we leave</span>
+      <span>Fully insured · soft-wash method</span>
+      <span>By introduction · zero ad spend</span>
     </div>
   </div>
 </section>
 
 <!-- THE FEAR -->
-<section class="fear">
+<section class="fear" id="fear">
   <div class="wrap">
-    <div class="grid">
-      <div>
-        <span class="num reveal">01 &mdash; The real risk</span>
-        <h2 class="section-title reveal d1">The damage doesn't show up on quote day. It shows up two summers later.</h2>
-        <p class="lead reveal d2" style="margin-top:1.2rem">High-pressure cleaning looks dramatic in the moment. Then the seals weep, the render cracks at the joins, and the roof warranty you paid for quietly becomes worthless. By then the operator is three suburbs away and unreachable.</p>
-        <div class="pull reveal d3">A blasted surface looks clean for a fortnight and compromised for a decade.</div>
+    <span class="eyebrow">Before you let anyone near it</span>
+    <h2>The wrong tool doesn't clean your roof. It <span class="em">cracks it.</span></h2>
+    <div class="fear-grid">
+      <div class="fear-card reveal">
+        <span class="n">01</span>
+        <h3>High pressure cracks tiles</h3>
+        <p>"I don't want anyone cracking my tiles." A blast across a tile or Colorbond roof chips, lifts and shatters the surface you paid a fortune for. There is no undo.</p>
       </div>
-      <div>
-        <ul>
-          <li class="reveal d1"><strong>Shattered window &amp; door seals</strong>Forced water past the gasket line &mdash; fogging, leaks, full reglazing bills.</li>
-          <li class="reveal d2"><strong>Voided roof warranties</strong>Manufacturers exclude high-pressure cleaning. One pass can end your cover.</li>
-          <li class="reveal d3"><strong>Stripped render &amp; paint</strong>Texture coat lifted at the edges, exposing substrate to the next storm.</li>
-          <li class="reveal d4"><strong>Etched stone &amp; timber</strong>Permanent furring and pitting on the surfaces that cost the most to replace.</li>
-        </ul>
+      <div class="fear-card reveal d1">
+        <span class="n">02</span>
+        <h3>It voids your roof warranty</h3>
+        <p>"Will high pressure void my roof warranty?" Most manufacturers will not honour a tile roof that's been high-pressure cleaned. One job, and the cover is gone.</p>
+      </div>
+      <div class="fear-card reveal d2">
+        <span class="n">03</span>
+        <h3>It forces water under the tiles</h3>
+        <p>"I heard pressure washing can force water into the roof cavity." Driven under the tiles and into the ceiling, that water shows up as a stain weeks later.</p>
       </div>
     </div>
+    <p class="fear-quote">The cost of the wrong contractor dwarfs the price of the clean. So the only question that matters is the method.</p>
   </div>
 </section>
 
-<!-- MECHANISM -->
-<section class="mech">
+<!-- THE MECHANISM: the spine of the page -->
+<section class="mech" id="mechanism">
   <div class="wrap">
-    <span class="num reveal" style="font-family:var(--display);font-weight:900;color:var(--blue);letter-spacing:.1em">02 &mdash; The mechanism</span>
-    <h2 class="section-title reveal d1">Soft-wash, matched to the surface. Not pressure-blasted.</h2>
-    <p class="lead reveal d2" style="margin-top:1.1rem">We don't own a single rig set to maximum and pointed at everything. Each surface gets its own dwell time, dilution and pressure &mdash; biology does the lifting, water just rinses.</p>
-
-    <div class="twocol">
-      <div class="mcard theirs reveal d1">
-        <span class="lbl">What most operators do</span>
-        <div class="psi">4,500<small>PSI &mdash; one setting, every surface</small></div>
-        <h3>Force the dirt off</h3>
-        <p>Brute pressure strips the grime and a layer of whatever it's sitting on with it. Fast on the day, expensive the year after.</p>
-      </div>
-      <div class="mcard ours dark reveal d2">
-        <span class="lbl">What Waterbenders do</span>
-        <div class="psi">&lt;500<small>PSI &mdash; tuned per surface</small></div>
-        <h3>Dissolve it, then rinse</h3>
-        <p>Surface-safe solution breaks the bond at the root, then a gentle rinse carries it away. The growth doesn't come straight back, and nothing underneath is touched.</p>
-      </div>
+    <div class="section-head reveal">
+      <span class="eyebrow">The method is the whole answer</span>
+      <h2 style="font-family:var(--display);font-size:clamp(1.9rem,3.8vw,3rem);font-weight:800;color:var(--navy);margin:.6rem 0 0">A low-pressure soft wash, matched to the surface.</h2>
     </div>
+    <p class="mech-spine reveal d1">We restore your exterior with a low-pressure soft wash that <span class="hl">kills mould and lichen at the root</span> — instead of blasting your roof — so your tiles never crack, your warranty stays intact, and no water is forced into the cavity.</p>
+
+    <div class="mech-legs">
+      <div class="leg reveal"><div class="tick">&#10003;</div><div><h4>Soft wash, never high pressure on roofs</h4><p>Manufacturer-approved low-pressure application. High pressure is never used on a roof — it's stated in your quote.</p></div></div>
+      <div class="leg reveal d1"><div class="tick">&#10003;</div><div><h4>Tiles never crack, warranty stays intact</h4><p>The method is the risk-removal. Before/after roof inspection photos, zero-breakage record.</p></div></div>
+      <div class="leg reveal"><div class="tick">&#10003;</div><div><h4>No water forced into the ceiling cavity</h4><p>Low-pressure application means no cavity ingress — your ceiling stays dry.</p></div></div>
+      <div class="leg reveal d1"><div class="tick">&#10003;</div><div><h4>Stays clean for months, not weeks</h4><p>Root-kill biocide stops regrowth, not just a surface blast-and-go. Look at the roof at 60–90 days.</p></div></div>
+    </div>
+
+    <p class="mech-line reveal">On the day we book, finished in one visit — or we come back free.</p>
+    <div style="text-align:center;margin-top:2.4rem" class="reveal d1"><a class="cta" href="#book" style="box-shadow:0 10px 30px -10px rgba(6,137,242,.5)">Book a Site Walk <span class="arrow">&rarr;</span></a></div>
   </div>
 </section>
 
-<!-- SERVICES framed by surface protected -->
-<section class="services">
+<!-- PROOF: 57 Royal Albert Drive draggable before/after -->
+<section class="proof" id="proof">
   <div class="wrap">
-    <div class="head">
-      <div>
-        <span class="eyebrow light reveal">03 &mdash; What we restore</span>
-        <h2 class="section-title reveal d1">Every surface, on its own terms.</h2>
-      </div>
-      <p class="lead reveal d2">One crew, one method, calibrated for each material on the building. Nothing handed to a sub, nothing run at a setting it can't survive.</p>
+    <div class="section-head reveal">
+      <span class="eyebrow">Address-level proof</span>
+      <h2 style="font-family:var(--display);font-size:clamp(1.9rem,3.8vw,3rem);font-weight:800;color:var(--navy);margin:.6rem 0 .8rem">The Royal Albert Standard</h2>
+      <p>Nobody in the category has a named flagship. We do. Drag to see how we leave a Gold Coast home.</p>
     </div>
 
+    <div class="compare reveal d1" id="compare" aria-label="Before and after, 57 Royal Albert Drive — drag to compare">
+      <img class="after" src="./wb-assets/images/hero-prestige-property.jpg" alt="57 Royal Albert Drive — after soft wash restoration" />
+      <div class="before-wrap" id="beforeWrap">
+        <img src="./wb-assets/images/services/roof-cleaning.jpg" alt="57 Royal Albert Drive — before" style="filter:grayscale(.45) brightness(.72) contrast(1.05)" />
+      </div>
+      <span class="tag b">Before</span>
+      <span class="tag a">After</span>
+      <div class="handle" id="handle"></div>
+      <div class="knob" id="knob"><svg viewBox="0 0 24 24" fill="none"><path d="M9 6 4 12l5 6M15 6l5 6-5 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    </div>
+    <p class="proof-cap reveal d2"><b>57 Royal Albert Drive</b> — a home like yours, this method, this result.</p>
+    <div style="text-align:center;margin-top:2.2rem" class="reveal d2"><a class="cta" href="#book">Book a Site Walk <span class="arrow">&rarr;</span></a></div>
+  </div>
+</section>
+
+<!-- SERVICES framed by the surface each one protects -->
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">One operator, the whole exterior</span>
+      <h2 style="font-family:var(--display);font-size:clamp(1.9rem,3.8vw,3rem);font-weight:800;color:var(--navy);margin:.6rem 0 .8rem">Every service is named for the surface it protects.</h2>
+    </div>
     <div class="svc-grid">
-      <article class="svc wide reveal d1">
-        <img src="./wb-assets/images/services/soft-washing.jpg" alt="Soft-washing render and walls" />
-        <div class="body">
-          <span class="protects">Protects &mdash; render, paint, cladding</span>
-          <h3>Soft-Wash House &amp; Render</h3>
-          <p>The core method. Walls, eaves and cladding cleared of mould and algae without lifting a single edge of texture coat.</p>
+      <div class="svc reveal">
+        <div class="ph"><img src="./wb-assets/images/services/roof-cleaning.jpg" alt="Roof soft washing" /><span class="protect">Protects · the tile roof &amp; warranty</span></div>
+        <div class="body"><h3>Roof soft wash</h3><p>Your tile or Colorbond roof restored — soft washed, never high-pressured. Warranty intact, water out of the cavity, growth killed at the root.</p></div>
+      </div>
+      <div class="svc reveal d1">
+        <div class="ph"><img src="./wb-assets/images/services/soft-washing.jpg" alt="House and render soft wash" /><span class="protect">Protects · render &amp; facade from salt</span></div>
+        <div class="body"><h3>House &amp; render wash</h3><p>Salt air is attacking your render every week. We bring it back to brand new — and the biocide keeps it that way for months.</p></div>
+      </div>
+      <div class="svc reveal d2">
+        <div class="ph"><img src="./wb-assets/images/services/window-cleaning.jpg" alt="Window cleaning" /><span class="protect">Protects · the view &amp; the glass</span></div>
+        <div class="body"><h3>Window cleaning</h3><p>"I can't see the water through my windows." Salt film gone, streak-free — every frame, sill and track, not just the glass.</p></div>
+      </div>
+      <div class="svc reveal">
+        <div class="ph"><img src="./wb-assets/images/services/pressure-washing.jpg" alt="Pressure washing hard surfaces" /><span class="protect">Protects · driveways &amp; hard surfaces</span></div>
+        <div class="body"><h3>Pressure washing</h3><p>Driveways, paths and pool surrounds back to as-new — the right pressure for the surface, on hard surfaces built to take it.</p></div>
+      </div>
+      <div class="svc reveal d1">
+        <div class="ph"><img src="./wb-assets/images/services/solar-panel-cleaning.png" alt="Solar panel cleaning" /><span class="protect">Protects · your solar generation</span></div>
+        <div class="body"><h3>Solar panel cleaning</h3><p>Dirty panels lose up to 40% of their output. We reclaim it — safely, no warranty risk. Recovered generation you can read on the meter.</p></div>
+      </div>
+      <div class="svc reveal d2" style="display:flex;align-items:center;justify-content:center;background:var(--navy);color:#fff;border:none">
+        <div class="body" style="text-align:center">
+          <span class="eyebrow light" style="display:block;margin-bottom:.6rem">Whole exterior</span>
+          <h3 style="color:#fff;font-size:1.4rem">Don't manage five trades.</h3>
+          <p style="color:rgba(255,255,255,.8)">One accountable operator for the entire exterior — windows, render, driveway, roof, solar. Set, scheduled, handled.</p>
+          <a class="cta ghost" href="#book" style="margin-top:1.2rem">Book a Site Walk</a>
         </div>
-      </article>
-
-      <article class="svc reveal d2">
-        <img src="./wb-assets/images/services/roof-cleaning.jpg" alt="Roof cleaning" />
-        <div class="body">
-          <span class="protects">Protects &mdash; tiles, ridge caps, warranty</span>
-          <h3>Roof Cleaning</h3>
-          <p>Low-pressure treatment that keeps your manufacturer cover valid &mdash; no walked-on cracks, no blown bedding.</p>
-        </div>
-      </article>
-
-      <article class="svc reveal d1">
-        <img src="./wb-assets/images/services/window-cleaning.jpg" alt="Window cleaning" />
-        <div class="body">
-          <span class="protects">Protects &mdash; seals, glass, frames</span>
-          <h3>Window &amp; Glass</h3>
-          <p>Streak-free finish at a pressure that never threatens a gasket or forces water past the frame line.</p>
-        </div>
-      </article>
-
-      <article class="svc reveal d2">
-        <img src="./wb-assets/images/services/pressure-washing.jpg" alt="Pressure washing hard surfaces" />
-        <div class="body">
-          <span class="protects">Protects &mdash; driveways, paving, stone</span>
-          <h3>Hard-Surface Wash</h3>
-          <p>Where pressure is the right tool &mdash; driveways and paving &mdash; we use it deliberately and only there.</p>
-        </div>
-      </article>
-
-      <article class="svc reveal d3">
-        <img src="./wb-assets/images/services/solar-panel-cleaning.png" alt="Solar panel cleaning" />
-        <div class="body">
-          <span class="protects">Protects &mdash; panels, coating, output</span>
-          <h3>Solar Panel Clean</h3>
-          <p>Deionised, no-pressure wash that lifts output without scratching the anti-reflective coating.</p>
-        </div>
-      </article>
-    </div>
-
-    <div style="margin-top:48px" class="reveal d2">
-      <a class="btn" href="#book">Book a site walk for your surfaces <span class="arr">&rarr;</span></a>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- EXCLUSIVITY / ESTATE CARE -->
-<section class="estate">
+<!-- THE OFFER -->
+<section class="offer" id="offer">
   <div class="wrap">
-    <div class="grid">
-      <div class="imgwrap reveal">
-        <img src="./wb-assets/images/founders/jett-and-beau.jpg" alt="Jett and Beau, founders of Waterbenders" />
-        <div class="cap">Jett &amp; Beau, founders<span>On every site walk, on most jobs.</span></div>
-      </div>
-      <div>
-        <span class="badge reveal">By arrangement &mdash; limited intake</span>
-        <h2 class="section-title reveal d1">We take on a limited number of homes each season.</h2>
-        <p class="lead reveal d2" style="margin-top:1.1rem">Surface-matched work takes time and judgement, so we keep the books deliberately short. For owners who'd rather never think about it again, our <strong style="color:var(--navy)">Estate Care</strong> program holds a recurring slot &mdash; scheduled around the seasons, before the algae takes hold.</p>
-        <ul class="feats">
-          <li class="reveal d1">A standing place in the schedule, booked ahead for the year</li>
-          <li class="reveal d2">Surfaces caught early &mdash; lighter treatments, longer-lasting results</li>
-          <li class="reveal d3">The same two people who did the first walk, every visit</li>
+    <span class="eyebrow light">The offer</span>
+    <h2>It starts with a site walk — not a price over the phone.</h2>
+    <p class="intro">No two prestige properties carry the same risk, so we don't quote off a square-metre rate down the line. We walk the property, read the surfaces, and hand you a fixed proposal on the spot.</p>
+
+    <div class="offer-grid">
+      <div class="ocard reveal">
+        <span class="step">Step 01 · the front door</span>
+        <h3>The Site Walk &amp; Fixed Proposal</h3>
+        <ul>
+          <li>We come to the property and read every surface — roof, render, glass, hard surfaces, solar.</li>
+          <li>You get a single, all-in fixed figure on the spot. No "from" pricing, no surprises later.</li>
+          <li>The method is in writing: soft wash, no high pressure on roofs, warranty-safe.</li>
+          <li>The Waterbenders Standard Guarantee in the proposal — flawless finish, no damage, we turn up, we come back free.</li>
         </ul>
-        <div style="margin-top:32px" class="reveal d3">
-          <a class="btn" href="#book">Ask about an Estate Care slot <span class="arr">&rarr;</span></a>
-        </div>
+      </div>
+      <div class="ocard reveal d1">
+        <span class="step">Step 02 · the back end</span>
+        <h3>Estate Care — set and forget</h3>
+        <ul>
+          <li>A recurring program that keeps the whole exterior to standard year-round, ahead of the salt air.</li>
+          <li>Priority slotting, between-visit touch-ups, and an annual solar output check.</li>
+          <li>One contact, one schedule. You approve once — then you stop thinking about it.</li>
+          <li>The Standard transfers with the property if you sell — a luxury lever no Gold Coast rival offers.</li>
+        </ul>
       </div>
     </div>
+
+    <div class="excl reveal">
+      We work by introduction and we don't take every job — so we never discount. <span>What you're offered is access to the standard, and exclusivity of our calendar — not a coupon.</span>
+    </div>
+
+    <div style="margin-top:2.6rem" class="reveal d1"><a class="cta" href="#book">Book a Site Walk <span class="arrow">&rarr;</span></a></div>
+  </div>
+</section>
+
+<!-- FOUNDERS / trust -->
+<section class="founders" id="founders">
+  <div class="wrap founders-inner">
+    <div class="reveal">
+      <span class="eyebrow">The operators you call</span>
+      <h2>You're handing the property to people who treat it like their own.</h2>
+      <p>Waterbenders runs on reputation, not advertising — a referral engine built one prestige Gold Coast home at a time. When the surface is too expensive to risk, you want the operator who turns up when they said, finishes in one visit, and sends the photos when it's done.</p>
+      <p>"Worth every cent." "It looks brand new." "We've used them for years." That's the standard we're judged on — and the one we leave behind.</p>
+    </div>
+    <img src="./wb-assets/images/founders/jett-and-beau.jpg" alt="Waterbenders founders" class="reveal d1" />
   </div>
 </section>
 
 <!-- BOOK -->
 <section class="book" id="book">
-  <div class="wrap">
-    <div class="grid">
-      <div>
-        <span class="eyebrow light reveal">The next step</span>
-        <h2 class="reveal d1">Start with a free site walk.</h2>
-        <p class="lead reveal d2">We come out, look at every surface in person, and hand you a fixed quote on the spot &mdash; no guessing, no follow-up sales call, no obligation. You'll know exactly what it costs before we leave the driveway.</p>
-        <ul class="reversal">
-          <li class="reveal d1">Fixed price agreed on-site &mdash; it doesn't move later</li>
-          <li class="reveal d2">Fully insured, surface-matched method on every job</li>
-          <li class="reveal d3">If we're not the right fit, we'll tell you and point you somewhere better</li>
-        </ul>
-      </div>
-
-      <form class="form reveal d1" onsubmit="return wbSubmit(event)">
-        <h3>Book your site walk</h3>
-        <p class="sub">Three details and we'll do the rest.</p>
-        <div class="field">
-          <label for="name">Name</label>
-          <input id="name" name="name" type="text" autocomplete="name" required placeholder="Your name" />
-        </div>
-        <div class="field">
-          <label for="phone">Phone</label>
-          <input id="phone" name="phone" type="tel" autocomplete="tel" required placeholder="04xx xxx xxx" />
-        </div>
-        <div class="field">
-          <label for="suburb">Suburb</label>
-          <input id="suburb" name="suburb" type="text" required placeholder="Where's the home?" />
-        </div>
-        <div class="field">
-          <label for="notes">Anything we should know <span style="font-weight:400;text-transform:none;letter-spacing:0;color:var(--ink-soft)">(optional)</span></label>
-          <textarea id="notes" name="notes" rows="2" placeholder="Roof, render, the lot…"></textarea>
-        </div>
-        <button class="btn" type="submit">Request my site walk <span class="arr">&rarr;</span></button>
-        <p class="reply">We reply <strong>same day</strong> &mdash; usually within a few hours.</p>
-      </form>
+  <div class="wrap book-inner">
+    <div class="reveal">
+      <span class="eyebrow">Book a site walk</span>
+      <h2>Hand it over. Stop thinking about it.</h2>
+      <p class="said">Leave your name, phone and suburb. We'll confirm a site walk and read the property in person — no price over the phone, no obligation.</p>
+      <div class="risk">Same-day reply, every time. If we ever come back to fix something, it's free — it's in your proposal.</div>
     </div>
+    <form class="reveal d1" onsubmit="event.preventDefault();var b=this.querySelector('.cta');b.textContent='Sent — we\'ll reply today';b.style.background='#1f7a3f';">
+      <div class="field"><label for="name">Name</label><input id="name" name="name" type="text" placeholder="Your name" required /></div>
+      <div class="field"><label for="phone">Phone</label><input id="phone" name="phone" type="tel" placeholder="04xx xxx xxx" required /></div>
+      <div class="field"><label for="suburb">Suburb</label><input id="suburb" name="suburb" type="text" placeholder="Sovereign Islands, Mermaid Beach…" required /></div>
+      <button type="submit" class="cta">Book a Site Walk <span class="arrow">&rarr;</span></button>
+      <p class="reply">Soft wash · fully insured · by introduction</p>
+    </form>
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <div class="wrap">
-    <div class="grid">
-      <div class="col" style="max-width:300px">
-        <img src="./wb-assets/logos/logo-white.png" alt="Waterbenders" />
-        <p>Surface-matched exterior restoration for the Gold Coast's most valuable homes.</p>
-      </div>
-      <div class="col">
-        <h4>Restore</h4>
-        <a href="#proof">The 57 RAC result</a>
-        <a href="#book">Soft-wash &amp; render</a>
-        <a href="#book">Roof &amp; solar</a>
-        <a href="#book">Estate Care</a>
-      </div>
-      <div class="col">
-        <h4>Get in touch</h4>
-        <a href="#book">Book a site walk</a>
-        <p>Fully insured</p>
-        <p>By arrangement &mdash; limited intake</p>
-      </div>
-    </div>
-    <div class="legal">&copy; <span id="yr"></span> Waterbenders. Fully insured exterior specialists, Gold Coast QLD.</div>
+    <img src="./wb-assets/logos/logo-white.png" alt="Waterbenders" />
+    <span>Waterbenders — luxury exterior restoration, Gold Coast. Soft washed, never blasted.</span>
   </div>
 </footer>
 
 <!-- STICKY CTA -->
-<div class="sticky" id="sticky">
-  <div class="msg">Too expensive to risk on a guess?<span>Free site walk &middot; fixed on-the-spot quote &middot; same-day reply</span></div>
-  <a class="btn" href="#book">Book a Site Walk <span class="arr">&rarr;</span></a>
+<div class="sticky-cta" id="sticky">
+  <span class="msg">Too expensive to risk? <span>Soft washed, never blasted.</span></span>
+  <a class="cta" href="#book">Book a Site Walk</a>
 </div>
 
 <script>
 (function(){
-  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  // year
-  document.getElementById('yr').textContent = new Date().getFullYear();
-
-  // nav scroll state + sticky CTA
-  var nav = document.getElementById('nav');
-  var sticky = document.getElementById('sticky');
-  var book = document.getElementById('book');
+  var nav=document.getElementById('nav');
+  var sticky=document.getElementById('sticky');
   function onScroll(){
-    var y = window.scrollY || window.pageYOffset;
-    nav.classList.toggle('scrolled', y > 40);
-    var bookTop = book.getBoundingClientRect().top;
-    var pastHero = y > window.innerHeight * 0.6;
-    var atBook = bookTop < window.innerHeight * 0.8;
-    sticky.classList.toggle('show', pastHero && !atBook);
+    var y=window.pageYOffset;
+    if(y>60)nav.classList.add('scrolled');else nav.classList.remove('scrolled');
+    if(y>700)sticky.classList.add('show');else sticky.classList.remove('show');
   }
-  window.addEventListener('scroll', onScroll, {passive:true});
-  onScroll();
+  window.addEventListener('scroll',onScroll,{passive:true});onScroll();
 
-  // reveals
-  var revealEls = Array.prototype.slice.call(document.querySelectorAll('.reveal'));
-  if(reduce || !('IntersectionObserver' in window)){
-    revealEls.forEach(function(el){el.classList.add('in');});
-  } else {
-    var io = new IntersectionObserver(function(entries){
-      entries.forEach(function(e){
-        if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
-      });
-    }, {threshold:0.15, rootMargin:'0px 0px -8% 0px'});
-    revealEls.forEach(function(el){io.observe(el);});
-  }
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+  },{threshold:.16});
+  document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
 
-  // before/after slider
-  var ba = document.getElementById('ba');
-  var after = document.getElementById('afterLayer');
-  var handle = document.getElementById('baHandle');
-  var knob = document.getElementById('baKnob');
-  var dragging = false;
-  function setPos(pct){
-    pct = Math.max(0, Math.min(100, pct));
-    after.style.clipPath = 'inset(0 0 0 ' + pct + '%)';
-    handle.style.left = pct + '%';
-    knob.style.left = pct + '%';
-    ba.setAttribute('aria-valuenow', Math.round(pct));
+  var c=document.getElementById('compare');
+  var bw=document.getElementById('beforeWrap');
+  var h=document.getElementById('handle');
+  var k=document.getElementById('knob');
+  var dragging=false;
+  function setPos(clientX){
+    var r=c.getBoundingClientRect();
+    var p=(clientX-r.left)/r.width;
+    p=Math.max(0,Math.min(1,p));
+    var pct=p*100;
+    bw.style.width=pct+'%';
+    h.style.left=pct+'%';
+    k.style.left=pct+'%';
   }
-  function fromEvent(clientX){
-    var r = ba.getBoundingClientRect();
-    setPos(((clientX - r.left) / r.width) * 100);
-  }
-  ba.addEventListener('mousedown', function(e){dragging=true; fromEvent(e.clientX); e.preventDefault();});
-  window.addEventListener('mousemove', function(e){ if(dragging) fromEvent(e.clientX); });
-  window.addEventListener('mouseup', function(){dragging=false;});
-  ba.addEventListener('touchstart', function(e){dragging=true; fromEvent(e.touches[0].clientX);}, {passive:true});
-  ba.addEventListener('touchmove', function(e){ if(dragging) fromEvent(e.touches[0].clientX); }, {passive:true});
-  ba.addEventListener('touchend', function(){dragging=false;});
-  ba.addEventListener('keydown', function(e){
-    var cur = parseFloat(ba.getAttribute('aria-valuenow')) || 50;
-    if(e.key==='ArrowLeft'){ setPos(cur-4); e.preventDefault(); }
-    if(e.key==='ArrowRight'){ setPos(cur+4); e.preventDefault(); }
-  });
-  setPos(50);
+  function down(x){dragging=true;setPos(x);}
+  function move(x){if(dragging)setPos(x);}
+  function up(){dragging=false;}
+  c.addEventListener('mousedown',function(e){down(e.clientX);});
+  window.addEventListener('mousemove',function(e){move(e.clientX);});
+  window.addEventListener('mouseup',up);
+  c.addEventListener('touchstart',function(e){down(e.touches[0].clientX);},{passive:true});
+  c.addEventListener('touchmove',function(e){move(e.touches[0].clientX);},{passive:true});
+  window.addEventListener('touchend',up);
 })();
-
-function wbSubmit(e){
-  e.preventDefault();
-  var btn = e.target.querySelector('button');
-  btn.innerHTML = 'Thanks &mdash; we\'ll be in touch today';
-  btn.style.background = '#0863B4';
-  btn.disabled = true;
-  return false;
-}
 </script>
 </body>
 </html>
